@@ -1,0 +1,2 @@
+# EarthquakeApp
+Earthquake visualisation app.
