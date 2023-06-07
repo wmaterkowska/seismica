@@ -1,5 +1,6 @@
 import express from 'express';
-const controller = require('./controllers/eventsController');
+import { getEvents } from './controllers/eventsController';
+// const controller = require('./controllers/eventsController');
 
 const router = express.Router();
 
@@ -9,7 +10,7 @@ router.get('/', (req, res) => {
 })
 
 
-router.get('/earthquakes/:sdate/:edate/:minM/:maxM', controller.getEvents);
+router.get('/earthquakes/:sdate/:edate/:minM/:maxM', getEvents);
 
 
 export default router;

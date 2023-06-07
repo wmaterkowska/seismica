@@ -1,9 +1,10 @@
 import express from 'express';
-const service = require('../services/eventsService');
+import { getEarthquakesData } from '../services/eventsService';
+// const service = require('../services/eventsService');
 
-exports.getEvents = async (req: express.Request, res: express.Response) => {
+export const getEvents = async (req: express.Request, res: express.Response) => {
   try {
-    let earthquakesData = await service.getEarthquakesData(req);
+    let earthquakesData = await getEarthquakesData();
     res.status(200);
     res.send(earthquakesData);
   } catch {

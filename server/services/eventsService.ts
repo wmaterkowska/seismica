@@ -1,5 +1,5 @@
 
-exports.getEarthquakesData = async () => {
+export const getEarthquakesData = async () => {
   return await fetchEventsDataFromApi();
 }
 
