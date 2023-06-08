@@ -42,10 +42,7 @@ export class EventsService {
       .subscribe((evnts) => {
         console.log(evnts, 'service');
         this.events = evnts;
-        // this.events = {
-        //   longitudes: evnts.longitudes
-        // }
-        console.log(this.events.longitudes);
+        // console.log(this.events.longitudes);
         this.events$.next(this.events);
       })
   }

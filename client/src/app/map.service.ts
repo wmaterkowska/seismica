@@ -2,6 +2,8 @@
 
 import { Injectable, OnInit } from '@angular/core';
 import { earthquakesData } from './earthquakesData';
+import { EventDataService } from './event-data.service';
+import { WaveService } from './wave.service';
 declare let Plotly: any;
 
 @Injectable({
@@ -9,35 +11,37 @@ declare let Plotly: any;
 })
 export class MapService implements OnInit {
 
-  constructor() { }
+  constructor(private eventDataService: EventDataService, private waveService: WaveService) { }
+
   ngOnInit(): void {
     // this.plotMap();
   }
 
 
-  plotMap(earthquakes: any) {
+  async plotMap(earthquakes: any) {
 
     let lats: number[];
     let lons: number[];
     let magnitudes: number[];
-
+    let times: string[];
 
     if (typeof earthquakes.earthquakesData === 'undefined') {
       lats = [];
       lons = [];
       magnitudes = [];
+      times = []
     } else {
       lats = earthquakes.earthquakesData.latitudes;
       lons = earthquakes.earthquakesData.longitudes;
       magnitudes = earthquakes.earthquakesData.magnitudes;
+      times = earthquakes.earthquakesData.times;
     }
 
-    console.log('plot map');
-    console.log(earthquakes, 'data inside plot')
+    // console.log(earthquakes, 'data inside plot')
 
     let mycolorscale = [[0.0, 'rgb(255, 192, 203)'], [1.0, '#4682B4']];
 
-    console.log(lons, lats, magnitudes);
+    // console.log(lons, lats, magnitudes);
 
     var layoutMy = {
       geo: {
@@ -85,26 +89,40 @@ export class MapService implements OnInit {
           title: 'magnitudes',
         },
       },
-      text: magnitudes.map(mag => 'M' + mag),
+      text: times,
+      // text: magnitudes.map(mag => 'M' + mag),
     }];
 
     Plotly.newPlot('map', dataMy, layoutMy);
 
     let myPlot = document.getElementById('map');
 
-    if (myPlot !== null) {
-      myPlot.on('plotly_click', function () {
+    console.log(this.eventDataService);
 
+    if (myPlot !== null) {
+      myPlot.on('plotly_click', async (time: string[]) => {
         console.log('clicked');
-        alert('Closest point clicked');
+
+        console.log(time.points[0].text, 'time');
+        // let data: number[] = [];
+
+        let date = time.points[0].text.slice(0, -1);
+
+        (await this.eventDataService.getEventData(date))
+          .subscribe(event => {
+            console.log(event)
+            this.waveService.plotWave(event.eventData);
+            return event
+          });
+
+        // this.waveService.plotWave(data);
+
+        // console.log(data, 'data');
+
       });
     }
 
   }
-
-
-
-
 
 
 }

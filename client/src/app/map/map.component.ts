@@ -203,11 +203,11 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
 
     this.eventsService.events$.subscribe((evnts: earthquakesData) => {
-      console.log({ evnts })
+      // console.log({ evnts })
       this.events = evnts;
 
       const data = this.events;
-      console.log(data, 'this events map component')
+      // console.log(data, 'this events map component')
       this.map.plotMap(data);
       return this.events
     });

@@ -9,6 +9,7 @@ export class WaveService implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   plotWave(dataArray: number[]) {
@@ -18,9 +19,10 @@ export class WaveService implements OnInit {
 
   processData(allRows: number[]) {
 
-    let x = [], y = [];
+    let x = [];
+    let y = [];
 
-    for (var i = 0; i < allRows.length; i++) {
+    for (let i = 0; i < allRows.length; i++) {
       let row = allRows[i];
       y.push(row);
       x.push(i);
@@ -31,7 +33,7 @@ export class WaveService implements OnInit {
 
   makePlotly(x: number[], y: number[]) {
 
-    let data = [{
+    const data = [{
       x: x,
       y: y,
       line: {
@@ -40,7 +42,7 @@ export class WaveService implements OnInit {
       }
     }]
 
-    let layout = {
+    const layout = {
       width: 1200,
       height: 300,
       line: {

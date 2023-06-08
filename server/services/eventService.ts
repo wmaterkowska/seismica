@@ -12,8 +12,8 @@ async function fetchEventDataFromApi(date: string) {
   // const STA = 'LCO';
   const CHANNEL = 'BHZ';
 
-  const sdate = new Date(Date.parse(date) - 120000).toISOString().slice(0, -1);
-  const edate = new Date(Date.parse(date) + 600000).toISOString().slice(0, -1);
+  const sdate = new Date(Date.parse(date) - 600000).toISOString().slice(0, -1);
+  const edate = new Date(Date.parse(date) + 1000000).toISOString().slice(0, -1);
 
   console.log(sdate, edate);
 

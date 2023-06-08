@@ -3,13 +3,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventDataService {
 
-  private baseURL = 'http://localhost:3000/event';
+  private baseURL = 'http://localhost:3000/eventData';
 
   private event: number[] = [];
 
@@ -19,10 +20,12 @@ export class EventDataService {
 
   async getEventData(date: string) {
     return await this.http.get(`${this.baseURL}/${date}`)
-      .subscribe((evnt) => {
-        this.event = evnt;
-        this.event$.next(this.event);
-      })
+    // .map(res => res)
+    // .subscribe((evnt) => {
+    //   this.event = evnt;
+    //   console.log(this.event, 'event');
+    //   this.event$.next(this.event);
+    // })
   }
 
 }
