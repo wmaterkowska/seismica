@@ -2,15 +2,15 @@ import express from 'express';
 import { getEarthquakesData } from '../services/eventsService';
 import { getEarthquakeData } from '../services/eventService';
 
+// API service: http://service.iris.edu/
+
+// get request to get data from IRIS API of all earthquakes from sdate to edate with magnitudes from minM to maxM
 export const getEvents = async (req: express.Request, res: express.Response) => {
   try {
     const { sdate, edate, minM, maxM } = req.params;
-    // console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++')
-    // console.log(sdate, edate, minM, maxM);
     let earthquakesData = await getEarthquakesData(sdate, edate, minM, maxM);
 
     res.status(200);
-    // console.log(earthquakesData);
     res.send({ earthquakesData });
   } catch {
     res.status(400);
@@ -18,6 +18,7 @@ export const getEvents = async (req: express.Request, res: express.Response) => 
   }
 }
 
+// get request to get wave data from IRIS API of single earthquake
 export const getEventData = async (req: express.Request, res: express.Response) => {
   try {
     const { date } = req.params;

@@ -3,11 +3,6 @@ import { getEvents, getEventData } from './controllers/eventsController';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  console.log('Hello World');
-  res.send('Hello world');
-})
-
 
 router.get('/earthquakes/:sdate/:edate/:minM/:maxM', getEvents);
 router.get('/eventData/:date', getEventData);

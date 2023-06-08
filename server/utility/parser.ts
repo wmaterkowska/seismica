@@ -1,4 +1,4 @@
-interface iDataObject {
+interface iCatalogObject {
   ids: number[],
   times: string[],
   latitudes: number[],
@@ -14,9 +14,9 @@ interface iDataObject {
   locations: string[],
 }
 
-export function parseEventsData(data: string): iDataObject {
+export function parseEventsData(data: string): iCatalogObject {
 
-  const dataObject: iDataObject = {
+  const dataObject: iCatalogObject = {
     ids: [],
     times: [],
     latitudes: [],
@@ -32,16 +32,13 @@ export function parseEventsData(data: string): iDataObject {
     locations: [],
   }
 
-  console.log(data);
-
 
   let rows: string[] = data.split('\n');
 
-  let eventsArray: string[][] = [];
+  let eventsArray: string[][] = []; //array with events - every event is array of data
   for (let i = 0; i < rows.length; i++) {
-    if (rows[i].match(/^#/) === null && rows[i] !== '' && rows[i].match(/^EventID/) === null) { //TODO add rows[i].match(/^EventID/) === null
+    if (rows[i].match(/^#/) === null && rows[i] !== '' && rows[i].match(/^EventID/) === null) {
       let eventArray = rows[i].split('|');
-      // console.log(eventArray, '++++++++++++++++++++++++');
       eventsArray.push(eventArray);
     }
   }
@@ -62,15 +59,13 @@ export function parseEventsData(data: string): iDataObject {
     dataObject.locations.push(eventArray[12]);
   });
 
-  // console.log(dataObject, '==========================================')
-
   return dataObject;
 }
+
 
 export function parseEventData(data: string) {
 
   let dataArray = data.split("\n");
-  // console.log(dataArray);
 
   let samples = [];
   for (let i = 0; i < dataArray.length; i++) {
