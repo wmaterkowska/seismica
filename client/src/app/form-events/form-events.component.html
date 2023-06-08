@@ -4,10 +4,10 @@
   <input class="input-date" type="number" min="1964" formControlName="startYear">
 
   <label class="label" value="Month">Month</label>
-  <input class="input-date" type="number" formControlName="startMonth">
+  <input class="input-date" type="number" min="1" max="12" formControlName="startMonth">
 
   <label class="label" value="Day">Day</label>
-  <input class="input-date" type="number" formControlName="startDay">
+  <input class="input-date" type="number" min="1" max="31" formControlName="startDay">
 
   <label class="label" value="Time">Time (HH:MM:SS)</label>
   <input class="input-time" type="time" step="1" formControlName="startTime">
@@ -21,10 +21,10 @@
   <input class="input-date" type="number" min="1964" formControlName="endYear">
 
   <label class="label" value="Month">Month</label>
-  <input class="input-date" type="number" formControlName="endMonth">
+  <input class="input-date" type="number" min="1" max="12" formControlName="endMonth">
 
   <label class="label" value="Day">Day</label>
-  <input class="input-date" type="number" formControlName="endDay">
+  <input class="input-date" type="number" min="1" max="31" formControlName="endDay">
 
   <label class="label" value="Time">Time (HH:MM:SS)</label>
   <input class="input-time" type="time" step="1" formControlName="endTime">

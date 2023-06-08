@@ -1,7 +1,6 @@
 // @ts-nocheck
 
-import { Injectable, OnInit } from '@angular/core';
-import { earthquakesData } from './earthquakesData';
+import { Injectable } from '@angular/core';
 import { EventDataService } from './event-data.service';
 import { WaveService } from './wave.service';
 declare let Plotly: any;
@@ -9,14 +8,9 @@ declare let Plotly: any;
 @Injectable({
   providedIn: 'root'
 })
-export class MapService implements OnInit {
+export class MapService {
 
   constructor(private eventDataService: EventDataService, private waveService: WaveService) { }
-
-  ngOnInit(): void {
-    // this.plotMap();
-  }
-
 
   async plotMap(earthquakes: any) {
 
@@ -29,7 +23,7 @@ export class MapService implements OnInit {
       lats = [];
       lons = [];
       magnitudes = [];
-      times = []
+      times = [];
     } else {
       lats = earthquakes.earthquakesData.latitudes;
       lons = earthquakes.earthquakesData.longitudes;
@@ -37,11 +31,7 @@ export class MapService implements OnInit {
       times = earthquakes.earthquakesData.times;
     }
 
-    // console.log(earthquakes, 'data inside plot')
-
     let mycolorscale = [[0.0, 'rgb(255, 192, 203)'], [1.0, '#4682B4']];
-
-    // console.log(lons, lats, magnitudes);
 
     var layoutMy = {
       geo: {
@@ -76,15 +66,12 @@ export class MapService implements OnInit {
         colorscale: mycolorscale,
         cmin: magnitudes.length === 0 ? 0 : magnitudes.reduce((mag1, mag2) => mag1 < mag2 ? mag1 : mag2),
         cmax: magnitudes.length === 0 ? 10 : magnitudes.reduce((mag1, mag2) => mag1 > mag2 ? mag1 : mag2),
-        // color: magnitudes,
-        // color: 'fuchsia',
         size: magnitudes.map(mag => mag * 4),
-        // size: 20,
         line: {
           width: 0,
         },
         colorbar: {
-          thickness: 10,
+          thickness: 15,
           len: 0.7,
           title: 'magnitudes',
         },
@@ -95,29 +82,19 @@ export class MapService implements OnInit {
 
     Plotly.newPlot('map', dataMy, layoutMy);
 
+    // adding onclick event
     let myPlot = document.getElementById('map');
-
-    console.log(this.eventDataService);
 
     if (myPlot !== null) {
       myPlot.on('plotly_click', async (time: string[]) => {
-        console.log('clicked');
-
-        console.log(time.points[0].text, 'time');
-        // let data: number[] = [];
 
         let date = time.points[0].text.slice(0, -1);
 
         (await this.eventDataService.getEventData(date))
           .subscribe(event => {
-            console.log(event)
             this.waveService.plotWave(event.eventData);
             return event
           });
-
-        // this.waveService.plotWave(data);
-
-        // console.log(data, 'data');
 
       });
     }

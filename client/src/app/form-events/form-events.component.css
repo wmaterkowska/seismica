@@ -11,7 +11,7 @@ input {
   height: 40px;
   border: 1px solid lightgray;
   border-radius: 5px;
-
+  padding-left: 10px;
 }
 
 .input-date {
@@ -19,7 +19,7 @@ input {
 }
 
 .input-time {
-  width: 90px;
+  width: 110px;
 }
 
 #submit-btn {

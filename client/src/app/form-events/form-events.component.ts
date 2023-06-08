@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { EventsService } from '../events.service';
 
@@ -7,12 +7,12 @@ import { EventsService } from '../events.service';
   templateUrl: './form-events.component.html',
   styleUrls: ['./form-events.component.css']
 })
-export class FormEventsComponent implements OnInit {
+export class FormEventsComponent {
 
   eventsForm = this.formBuilder.group({
-    startYear: new FormControl(new Date().getFullYear(), [Validators.required]),
-    startMonth: new FormControl(new Date().getMonth(), [Validators.required]),
-    startDay: new FormControl(new Date().getDay(), [Validators.required]),
+    startYear: new FormControl(1964, [Validators.required]),
+    startMonth: new FormControl(1, [Validators.required]),
+    startDay: new FormControl(1, [Validators.required]),
     startTime: new FormControl('', [Validators.required]),
     endYear: new FormControl(new Date().getFullYear(), [Validators.required]),
     endMonth: new FormControl(new Date().getMonth(), [Validators.required]),
@@ -24,12 +24,6 @@ export class FormEventsComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder, private service: EventsService) { }
-
-  ngOnInit(): void {
-    // this.eventsForm.valueChanges.subscribe(form => {
-    //   console.log(form);
-    // })
-  }
 
   async handleSubmit() {
     console.log(this.eventsForm.value);
@@ -56,9 +50,8 @@ export class FormEventsComponent implements OnInit {
     }
     let endDate = `${eventsDataObj.endYear}-${endMonth}-${endDay}T${eventsDataObj.endTime}`;
 
+
     this.service.getEvents(startDate, endDate, eventsDataObj.minMag, eventsDataObj.maxMag);
-
-
 
     this.eventsForm.reset();
   }
