@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { FormEventsComponent } from './form-events/form-events.component';
 import { MapComponent } from './map/map.component';
+import { EventDataComponent } from './event-data/event-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormEventsComponent,
-    MapComponent
+    MapComponent,
+    EventDataComponent
   ],
   imports: [
     BrowserModule,

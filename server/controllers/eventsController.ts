@@ -1,6 +1,6 @@
 import express from 'express';
 import { getEarthquakesData } from '../services/eventsService';
-// const service = require('../services/eventsService');
+import { getEarthquakeData } from '../services/eventService';
 
 export const getEvents = async (req: express.Request, res: express.Response) => {
   try {
@@ -16,4 +16,18 @@ export const getEvents = async (req: express.Request, res: express.Response) => 
     res.status(400);
     res.send('Getting data from API failed.')
   }
+}
+
+export const getEventData = async (req: express.Request, res: express.Response) => {
+  try {
+    const { date } = req.params;
+    let eventData = await getEarthquakeData(date);
+
+    res.status(200);
+    res.send({ eventData });
+  } catch {
+    res.status(400);
+    res.send('Getting data from API failed.')
+  }
+
 }

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Injectable, OnInit } from '@angular/core';
 import { earthquakesData } from './earthquakesData';
 declare let Plotly: any;
@@ -68,12 +70,12 @@ export class MapService implements OnInit {
         color: magnitudes,
         autocolorscale: false,
         colorscale: mycolorscale,
-        // cmin: magnitudes.reduce((mag1, mag2) => mag1 < mag2),
-        // cmax: magnitudes.reduce((mag1, mag2) => mag1 > mag2),
+        cmin: magnitudes.length === 0 ? 0 : magnitudes.reduce((mag1, mag2) => mag1 < mag2 ? mag1 : mag2),
+        cmax: magnitudes.length === 0 ? 10 : magnitudes.reduce((mag1, mag2) => mag1 > mag2 ? mag1 : mag2),
         // color: magnitudes,
         // color: 'fuchsia',
-        // size: magnitudes.map(mag => mag * 4),
-        size: 20,
+        size: magnitudes.map(mag => mag * 4),
+        // size: 20,
         line: {
           width: 0,
         },
@@ -83,10 +85,20 @@ export class MapService implements OnInit {
           title: 'magnitudes',
         },
       },
-      text: 'text', //magnitudes.map(mag => 'M' + mag),
+      text: magnitudes.map(mag => 'M' + mag),
     }];
 
     Plotly.newPlot('map', dataMy, layoutMy);
+
+    let myPlot = document.getElementById('map');
+
+    if (myPlot !== null) {
+      myPlot.on('plotly_click', function () {
+
+        console.log('clicked');
+        alert('Closest point clicked');
+      });
+    }
 
   }
 

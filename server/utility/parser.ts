@@ -66,3 +66,19 @@ export function parseEventsData(data: string): iDataObject {
 
   return dataObject;
 }
+
+export function parseEventData(data: string) {
+
+  let dataArray = data.split("\n");
+  // console.log(dataArray);
+
+  let samples = [];
+  for (let i = 0; i < dataArray.length; i++) {
+    if (dataArray[i].match(/^#/) === null && dataArray[i].match(/^Sample/) === null) {
+      samples.push(parseInt(dataArray[i]))
+    }
+  }
+  return samples;
+
+}
+
