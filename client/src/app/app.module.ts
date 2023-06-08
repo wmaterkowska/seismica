@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { FormEventsComponent } from './form-events/form-events.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormEventsComponent
+    FormEventsComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
