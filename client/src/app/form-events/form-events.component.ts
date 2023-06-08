@@ -58,6 +58,8 @@ export class FormEventsComponent implements OnInit {
 
     this.service.getEvents(startDate, endDate, eventsDataObj.minMag, eventsDataObj.maxMag);
 
+
+
     this.eventsForm.reset();
   }
 

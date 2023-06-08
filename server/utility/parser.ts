@@ -39,7 +39,7 @@ export function parseEventsData(data: string): iDataObject {
 
   let eventsArray: string[][] = [];
   for (let i = 0; i < rows.length; i++) {
-    if (rows[i].match(/^#/) === null && rows[i] !== '') { //TODO add rows[i].match(/^EventID/) === null
+    if (rows[i].match(/^#/) === null && rows[i] !== '' && rows[i].match(/^EventID/) === null) { //TODO add rows[i].match(/^EventID/) === null
       let eventArray = rows[i].split('|');
       // console.log(eventArray, '++++++++++++++++++++++++');
       eventsArray.push(eventArray);
@@ -62,7 +62,7 @@ export function parseEventsData(data: string): iDataObject {
     dataObject.locations.push(eventArray[12]);
   });
 
-  console.log(dataObject, '==========================================')
+  // console.log(dataObject, '==========================================')
 
   return dataObject;
 }

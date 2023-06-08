@@ -1,4 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
+import { earthquakesData } from './earthquakesData';
 declare let Plotly: any;
 
 @Injectable({
@@ -8,16 +9,33 @@ export class MapService implements OnInit {
 
   constructor() { }
   ngOnInit(): void {
-    this.main();
+    // this.plotMap();
   }
 
-  main() {
 
-    let mycolorscale = [[0.0, 'rgb(255, 192, 203)'], [1.0, '#4682B4']]
+  plotMap(earthquakes: any) {
 
-    let lats: number[] = [];
-    let lons: number[] = [];
-    let magnitudes: number[] = [];
+    let lats: number[];
+    let lons: number[];
+    let magnitudes: number[];
+
+
+    if (typeof earthquakes.earthquakesData === 'undefined') {
+      lats = [];
+      lons = [];
+      magnitudes = [];
+    } else {
+      lats = earthquakes.earthquakesData.latitudes;
+      lons = earthquakes.earthquakesData.longitudes;
+      magnitudes = earthquakes.earthquakesData.magnitudes;
+    }
+
+    console.log('plot map');
+    console.log(earthquakes, 'data inside plot')
+
+    let mycolorscale = [[0.0, 'rgb(255, 192, 203)'], [1.0, '#4682B4']];
+
+    console.log(lons, lats, magnitudes);
 
     var layoutMy = {
       geo: {
@@ -54,7 +72,8 @@ export class MapService implements OnInit {
         // cmax: magnitudes.reduce((mag1, mag2) => mag1 > mag2),
         // color: magnitudes,
         // color: 'fuchsia',
-        size: magnitudes.map(mag => mag * 4),
+        // size: magnitudes.map(mag => mag * 4),
+        size: 20,
         line: {
           width: 0,
         },
@@ -64,7 +83,7 @@ export class MapService implements OnInit {
           title: 'magnitudes',
         },
       },
-      text: magnitudes.map(mag => 'M' + mag),
+      text: 'text', //magnitudes.map(mag => 'M' + mag),
     }];
 
     Plotly.newPlot('map', dataMy, layoutMy);

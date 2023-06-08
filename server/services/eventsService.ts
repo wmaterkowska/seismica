@@ -23,6 +23,6 @@ async function fetchEventsDataFromApi(sdate: string, edate: string, minM: string
 
   const dataObject = parseEventsData(eventsDataString);
 
-  // console.log(data);
+  console.log(dataObject.longitudes, 'server longitudes');
   return dataObject;
 }
