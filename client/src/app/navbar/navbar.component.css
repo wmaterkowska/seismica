@@ -1,0 +1,18 @@
+#navbar-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: end;
+  border: 1px gray solid;
+  border-radius: 10px;
+  padding: 3%
+}
+
+#logo {
+  flex-grow: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-self: flex-end;
+}

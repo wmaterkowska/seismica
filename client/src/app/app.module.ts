@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { FormEventsComponent } from './form-events/form-events.component';
 import { MapComponent } from './map/map.component';
 import { EventDataComponent } from './event-data/event-data.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormEventsComponent,
     MapComponent,
-    EventDataComponent
+    EventDataComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
