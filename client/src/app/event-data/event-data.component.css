@@ -1,6 +1,8 @@
 @import "../../styles.css";
 
 #event-container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   border: 1px lightgrey solid;
   border-radius: 10px;
@@ -8,28 +10,31 @@
 }
 
 #event-data-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px;
 }
 
 #data-list {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   list-style-type: none;
-
 }
 
 .data-element {
-  display: inline;
+  display: flex;
   margin: 10px;
 }
 
 #data-list:nth-child(odd) {
+  display: flex;
   font-weight: bold;
   color: var(--blue);
-  width: calc(100% * (1/4) - 10px - 1px);
-
 }
 
 #data-list:nth-child(2n) {
-  width: calc(100% * (1/4) - 10px - 1px);
+  display: flex;
 }
