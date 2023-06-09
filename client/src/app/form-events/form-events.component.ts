@@ -13,12 +13,12 @@ export class FormEventsComponent {
     startYear: new FormControl(1964, [Validators.required]),
     startMonth: new FormControl(1, [Validators.required]),
     startDay: new FormControl(1, [Validators.required]),
-    startTime: new FormControl('', [Validators.required]),
+    startTime: new FormControl('00:00:00', [Validators.required]),
     endYear: new FormControl(new Date().getFullYear(), [Validators.required]),
     endMonth: new FormControl(new Date().getMonth(), [Validators.required]),
     endDay: new FormControl(new Date().getDay(), [Validators.required]),
-    endTime: new FormControl('', [Validators.required]),
-    minMag: new FormControl<number>(0, { validators: [Validators.required], nonNullable: true }),
+    endTime: new FormControl('00:00:00', [Validators.required]),
+    minMag: new FormControl<number>(8, { validators: [Validators.required], nonNullable: true }),
     maxMag: new FormControl<number>(10, { validators: [Validators.required], nonNullable: true }),
   })
 
@@ -26,7 +26,6 @@ export class FormEventsComponent {
   constructor(private formBuilder: FormBuilder, private service: EventsService) { }
 
   async handleSubmit() {
-    console.log(this.eventsForm.value);
     const eventsDataObj = await this.eventsForm.getRawValue();
 
     // date in format: 2011-01-09T00:00:00

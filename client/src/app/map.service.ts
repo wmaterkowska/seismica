@@ -92,7 +92,12 @@ export class MapService {
 
         (await this.eventDataService.getEventData(date))
           .subscribe(event => {
-            this.waveService.plotWave(event.eventData);
+
+            console.log(event, 'event');
+
+            this.eventDataService.loadEventData(event.eventData.metadata);
+
+            this.waveService.plotWave(event.eventData.wave);
             return event
           });
 

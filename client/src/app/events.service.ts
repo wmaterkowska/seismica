@@ -35,7 +35,6 @@ export class EventsService {
   async getEvents(sdate: string, edate: string, minM: number, maxM: number) {
     return await this.http.get(`${this.baseURL}/earthquakes/${sdate}/${edate}/${minM}/${maxM}`)
       .subscribe((evnts) => {
-        console.log(evnts, 'service');
         this.events = evnts;
         this.events$.next(this.events);
       })
