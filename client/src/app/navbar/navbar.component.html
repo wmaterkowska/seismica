@@ -4,6 +4,10 @@
   </div>
   <div id="nav-items">
     <div class="nav-item"><span class="material-symbols-outlined"> settings </span></div>
-    <div class="nav-item"> <span class="material-symbols-outlined"> help </span></div>
+    <div class="nav-item" (click)="handleHelpClick()"> <span class="material-symbols-outlined"> help </span></div>
   </div>
+
+</div>
+<div id="tool-tip" *ngIf="isToolTipShowed">
+  lorem ipsum
 </div>

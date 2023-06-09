@@ -30,7 +30,7 @@ export class WaveService {
     }]
 
     const layout = {
-      width: 1200,
+      width: 1000,
       height: 300,
       line: {
         width: 0.1,

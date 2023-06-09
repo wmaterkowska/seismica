@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  isToolTipShowed: boolean = false;
+
+
+  handleHelpClick() {
+    if (!this.isToolTipShowed) {
+      this.isToolTipShowed = true;
+    } else {
+      this.isToolTipShowed = false;
+    }
+  }
+
 }
