@@ -26,7 +26,6 @@ export class FormEventsComponent {
   constructor(private formBuilder: FormBuilder, private service: EventsService) { }
 
   async handleSubmit() {
-    console.log(this.eventsForm.value);
     const eventsDataObj = await this.eventsForm.getRawValue();
 
     // date in format: 2011-01-09T00:00:00

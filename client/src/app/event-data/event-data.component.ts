@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EventDataService } from '../event-data.service';
 import { WaveService } from '../wave.service';
 
@@ -9,17 +9,18 @@ import { WaveService } from '../wave.service';
 })
 export class EventDataComponent implements OnInit {
 
-  constructor(private dataService: EventDataService, private wave: WaveService) { }
+  constructor(private dataService: EventDataService) { }
 
-  event: number[] = [];
+  data: string = '';
 
   ngOnInit(): void {
-    this.dataService.event$.subscribe((evnt: number[]) => {
-      this.event = evnt;
-
-      this.wave.plotWave(evnt);
-      return this.event;
-    })
+    this.dataService.dataE.subscribe(evD => {
+      // this.data = this.dataService.retriveEventData().join();
+      if (evD) {
+        this.data = evD.join();
+      }
+    });
+    console.log(this.data, 'data event-data component');
   }
 
 }
