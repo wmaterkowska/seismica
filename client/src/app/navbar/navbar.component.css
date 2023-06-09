@@ -22,10 +22,14 @@
 .nav-item {
   display: flex;
   align-self: flex-end;
+  border: none;
+  background-color: white;
+  color: grey;
+  cursor: pointer;
 }
 
 #tool-tip {
-  border: 1px gray solid;
+  border: 1px lightgrey solid;
   border-radius: 10px;
   padding: 3%;
   position: relative;

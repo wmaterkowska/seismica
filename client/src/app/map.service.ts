@@ -1,14 +1,19 @@
 // @ts-nocheck
 
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { EventDataService } from './event-data.service';
 import { WaveService } from './wave.service';
+import { EventEmitter } from 'stream';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 declare let Plotly: any;
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapService {
+
+  isEventData: Subject<Boolean> = new BehaviorSubject(null);
+  isEventData$: Observable<Boolean> = this.isEventData.asObservable();
 
   constructor(private eventDataService: EventDataService, private waveService: WaveService) { }
 
@@ -89,6 +94,8 @@ export class MapService {
       myPlot.on('plotly_click', async (time: string[]) => {
 
         let date = time.points[0].text.slice(0, -1);
+
+        this.isEventData.next(true);
 
         (await this.eventDataService.getEventData(date))
           .subscribe(event => {

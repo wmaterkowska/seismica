@@ -9,6 +9,15 @@
   padding: 3%
 }
 
+#add-btn {
+  width: fit-content;
+  border: none;
+  background-color: white;
+  margin-right: 0;
+  margin-left: auto;
+  color: grey;
+}
+
 #event-data-container {
   display: flex;
   flex-wrap: wrap;
