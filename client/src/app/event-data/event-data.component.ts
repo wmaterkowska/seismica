@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EventDataService } from '../event-data.service';
-import { WaveService } from '../wave.service';
 
 @Component({
   selector: 'app-event-data',
@@ -21,8 +20,14 @@ export class EventDataComponent implements OnInit {
         evD.splice(1, 1);
         evD.splice(-1, 1)
 
+        let dataSeparately: string[] = [];
+        evD.forEach((data) => {
+          dataSeparately.push(...data.split(': '));
+        });
 
-        this.data = evD
+        console.log(dataSeparately, 'data separately')
+
+        this.data = dataSeparately;
       }
     });
     // console.log(this.data, 'data event-data component');

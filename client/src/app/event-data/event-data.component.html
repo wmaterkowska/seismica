@@ -1,10 +1,8 @@
-<div id="data-container">
-<div id="event-data-container">
-  <li *ngFor="let d of data" class="data-list">
-    <ul class="data-element">{{d}}</ul>
-  </li>
-</div>
-<div id="wave">
-
-</div>
+<div id="event-container">
+  <div id="event-data-container">
+    <ul *ngFor="let d of data" id="data-list">
+      <li class="data-element">{{d}}</li>
+    </ul>
   </div>
+  <div id="wave"></div>
+</div>

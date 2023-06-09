@@ -1,3 +1,5 @@
+@import "../../styles.css";
+
 #event-container {
   width: 100%;
   border: 1px lightgrey solid;
@@ -7,5 +9,27 @@
 
 #event-data-container {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
+}
+
+#data-list {
+  display: inline-block;
+  list-style-type: none;
+
+}
+
+.data-element {
+  display: inline;
+  margin: 10px;
+}
+
+#data-list:nth-child(odd) {
+  font-weight: bold;
+  color: var(--blue);
+  width: calc(100% * (1/4) - 10px - 1px);
+
+}
+
+#data-list:nth-child(2n) {
+  width: calc(100% * (1/4) - 10px - 1px);
 }
