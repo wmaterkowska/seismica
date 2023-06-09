@@ -11,11 +11,8 @@ export class EventDataService {
 
   private baseURL = 'http://localhost:3000/eventData';
 
-  // private event: number[] = [];
   private event: any = {}; // (?)
-  // private data: string[] = [];
 
-  // event$ = new BehaviorSubject<number[]>(this.event); // (?)
   public eventData$ = new BehaviorSubject<string[]>(this.data);
   public dataE = this.eventData$.asObservable();
 
@@ -27,15 +24,12 @@ export class EventDataService {
 
 
   loadEventData(eventData: string[]) {
-    // this.data = eventData;
     this.eventData$.next(eventData);
-    // this.dataE.next(eventData);
   }
 
   retriveEventData() {
     console.log(this.eventData$.getValue(), 'event data value from subscriber');
     return this.eventData$.getValue();
-    // return this.dataE.subscribe(data => {this.dataE = data})
   }
 
 
