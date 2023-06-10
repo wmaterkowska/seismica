@@ -22,8 +22,8 @@ export class NavbarComponent {
   }
 
   async handleCompareClick() {
-    let link = await this.comparisonService.getDataToCompare();
-    console.log(link, 'link')
+    let link = 'comparison'
+    // let link = await this.comparisonService.getDataToCompare();
     return link;
   }
 

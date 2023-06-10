@@ -39,10 +39,11 @@ export class EventDataComponent implements OnInit {
 
 
   addToCompare() {
-    let date = '';
-    this.mapService.dateOfEvent$.subscribe(d => { date = d });
+    let dat = '';
+    this.mapService.dateOfEvent$.subscribe(d => { dat = d });
     if (this.comparisonService.toCompare.getValue().length < 4) {
-      this.comparisonService.toCompare.next(this.comparisonService.toCompare.getValue().concat([date]))
+      console.log(dat, 'dat----------------------------')
+      this.comparisonService.toCompare.next(this.comparisonService.toCompare.getValue().concat(dat))
     } else {
       alert('You reached the limit of earthquakes to compare.')
     }
