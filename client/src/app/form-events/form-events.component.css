@@ -4,15 +4,15 @@
   margin-top: 2%;
   border: 1px lightgrey solid;
   border-radius: 10px;
-  padding: 3%
+  padding: 3%;
 }
 
 form>* {
-  margin: 10px
+  margin: 5px;
 }
 
 input {
-  height: 40px;
+  height: 35px;
   border: 1px solid lightgray;
   border-radius: 5px;
   padding-left: 10px;
@@ -27,6 +27,8 @@ input {
 }
 
 #submit-btn {
+  position: absolute;
+  float: right;
   width: 60px;
   height: 40px;
 }
