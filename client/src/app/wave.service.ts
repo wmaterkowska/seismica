@@ -8,7 +8,7 @@ export class WaveService {
 
   constructor() { }
 
-  plotWave(dataArray: number[]) {
+  plotWave(dataArray: number[], date?: string) {
 
     let x = [];
     let y = [];
@@ -37,8 +37,16 @@ export class WaveService {
 
     }
 
-    Plotly.newPlot('wave', data, layout);
+    let divName: string = '';
+    if (date) {
+      divName = 'wave' + date;
+    } else {
+      divName = 'wave';
+    }
+
+    Plotly.newPlot(divName, data, layout);
 
   }
+
 
 }
