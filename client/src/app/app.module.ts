@@ -8,6 +8,9 @@ import { FormEventsComponent } from './form-events/form-events.component';
 import { MapComponent } from './map/map.component';
 import { EventDataComponent } from './event-data/event-data.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ComparisonComponent } from './comparison/comparison.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,15 @@ import { NavbarComponent } from './navbar/navbar.component';
     FormEventsComponent,
     MapComponent,
     EventDataComponent,
-    NavbarComponent
+    NavbarComponent,
+    ComparisonComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

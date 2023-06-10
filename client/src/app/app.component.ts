@@ -6,17 +6,17 @@ import { MapService } from './map.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'seismica';
 
-  isEvent: Boolean = false;
+  // isEvent: Boolean = false;
 
-  constructor(private serv: MapService) { }
+  // constructor(private serv: MapService) { }
 
 
-  ngOnInit(): void {
-    this.serv.isEventData.subscribe(data => this.isEvent = data);
-  }
+  // ngOnInit(): void {
+  //   this.serv.isEventData.subscribe(data => this.isEvent = data);
+  // }
 
 
 

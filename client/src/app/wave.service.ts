@@ -19,7 +19,6 @@ export class WaveService {
       x.push(i);
     }
 
-
     const data = [{
       x: x,
       y: y,

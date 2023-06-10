@@ -1,9 +1,8 @@
 // @ts-nocheck
 
-import { Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { EventDataService } from './event-data.service';
 import { WaveService } from './wave.service';
-import { EventEmitter } from 'stream';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 declare let Plotly: any;
 
@@ -12,8 +11,11 @@ declare let Plotly: any;
 })
 export class MapService {
 
-  isEventData: Subject<Boolean> = new BehaviorSubject(null);
+  isEventData: BehaviorSubject<Boolean> = new BehaviorSubject(null);
   isEventData$: Observable<Boolean> = this.isEventData.asObservable();
+
+  dateOfEvent: Subject<string> = new BehaviorSubject('');
+  dateOfEvent$: Observable<string> = this.dateOfEvent.asObservable();
 
   constructor(private eventDataService: EventDataService, private waveService: WaveService) { }
 
@@ -98,24 +100,24 @@ export class MapService {
 
     Plotly.newPlot('map', dataMy, layoutMy);
 
-    // adding onclick event
+    // adding onclick event which will send a date to backend to recieve event wave and data and show everything
     let myPlot = document.getElementById('map');
 
     if (myPlot !== null) {
       myPlot.on('plotly_click', async (time: string[]) => {
 
         let date = time.points[0].text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/gm);
+        this.dateOfEvent.next(date);
 
         this.isEventData.next(true);
 
+        // send call to service to get event data
         (await this.eventDataService.getEventData(date))
           .subscribe(event => {
 
-            console.log(event, 'event');
-
             this.eventDataService.loadEventData(event.eventData.metadata);
-
             this.waveService.plotWave(event.eventData.wave);
+
             return event
           });
 

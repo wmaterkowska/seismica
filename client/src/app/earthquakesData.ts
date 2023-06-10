@@ -13,3 +13,10 @@ export interface earthquakesData {
   magAuthors: string[];
   locations: string[];
 }
+
+export interface earthquakeData {
+  eventData: {
+    metadata: string[];
+    wave: number[];
+  }
+}
