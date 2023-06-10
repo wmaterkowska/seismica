@@ -16,7 +16,6 @@ export class EventDataComponent implements OnInit {
     this.dataService.dataE.subscribe(evD => {
       if (evD) {
 
-        console.log(evD, 'evD');
         evD.splice(1, 1);
         evD.splice(-1, 1)
 
@@ -24,8 +23,6 @@ export class EventDataComponent implements OnInit {
         evD.forEach((data) => {
           dataSeparately.push(...data.split(': '));
         });
-
-        console.log(dataSeparately, 'data separately')
 
         this.data = dataSeparately;
       }

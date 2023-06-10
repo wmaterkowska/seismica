@@ -8,11 +8,11 @@ export const getEarthquakeData = async (date: string) => {
 async function fetchEventDataFromApi(date: string) {
 
   const NET = 'IU';
-  const STA = 'LCO';
+  const STA = 'ANMO';
   const CHANNEL = 'BHZ';
 
-  const sdate = new Date(Date.parse(date) - 600000).toISOString().slice(0, -1);
-  const edate = new Date(Date.parse(date) + 1000000).toISOString().slice(0, -1);
+  const sdate = new Date(Date.parse(date) - 50000).toISOString().slice(0, -1);
+  const edate = new Date(Date.parse(date) + 3000000).toISOString().slice(0, -1);
 
   const http = `${eventHttp}net=${NET}&sta=${STA}&loc=00&cha=${CHANNEL}&start=${sdate}&end=${edate}&format=geocsv.slist.inline`;
 
