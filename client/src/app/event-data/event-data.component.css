@@ -5,8 +5,8 @@
 } */
 
 #loading {
+  /* position: absolut  */
   position: sticky;
-
   left: 50%;
   top: 70%;
   z-index: 1;

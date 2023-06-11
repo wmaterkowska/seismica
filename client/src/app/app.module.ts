@@ -12,6 +12,7 @@ import { ComparisonComponent } from './comparison/comparison.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EarthquakeCardComponent } from './earthquake-card/earthquake-card.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EarthquakeCardComponent } from './earthquake-card/earthquake-card.compo
     NavbarComponent,
     ComparisonComponent,
     DashboardComponent,
-    EarthquakeCardComponent
+    EarthquakeCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
