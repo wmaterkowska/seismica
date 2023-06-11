@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MapService } from './map.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'seismica';
+
+  // isEvent: Boolean = false;
+
+  // constructor(private serv: MapService) { }
+
+
+  // ngOnInit(): void {
+  //   this.serv.isEventData.subscribe(data => this.isEvent = data);
+  // }
+
+
+
+
+
 }

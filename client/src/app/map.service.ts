@@ -3,12 +3,19 @@
 import { Injectable } from '@angular/core';
 import { EventDataService } from './event-data.service';
 import { WaveService } from './wave.service';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 declare let Plotly: any;
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapService {
+
+  isEventData: BehaviorSubject<Boolean> = new BehaviorSubject(null);
+  isEventData$: Observable<Boolean> = this.isEventData.asObservable();
+
+  dateOfEvent: Subject<string> = new BehaviorSubject('');
+  dateOfEvent$: Observable<string> = this.dateOfEvent.asObservable();
 
   constructor(private eventDataService: EventDataService, private waveService: WaveService) { }
 
@@ -17,19 +24,30 @@ export class MapService {
     let lats: number[];
     let lons: number[];
     let magnitudes: number[];
+    let places: string[];
     let times: string[];
 
     if (typeof earthquakes.earthquakesData === 'undefined') {
       lats = [];
       lons = [];
       magnitudes = [];
+      places = [];
       times = [];
     } else {
       lats = earthquakes.earthquakesData.latitudes;
       lons = earthquakes.earthquakesData.longitudes;
       magnitudes = earthquakes.earthquakesData.magnitudes;
+      places = earthquakes.earthquakesData.locations;
       times = earthquakes.earthquakesData.times;
     }
+
+    let text = [];
+
+    for (let i = 0; i < lats.length; i++) {
+      let txt = `magnitude: ${magnitudes[i]} \n time: ${times[i]} \n ${places[i]}`
+      text.push(txt);
+    }
+
 
     let mycolorscale = [[0.0, 'rgb(255, 192, 203)'], [1.0, '#4682B4']];
 
@@ -76,28 +94,30 @@ export class MapService {
           title: 'magnitudes',
         },
       },
-      text: times,
+      text: text,
       // text: magnitudes.map(mag => 'M' + mag),
     }];
 
     Plotly.newPlot('map', dataMy, layoutMy);
 
-    // adding onclick event
+    // adding onclick event which will send a date to backend to recieve event wave and data and show everything
     let myPlot = document.getElementById('map');
 
     if (myPlot !== null) {
       myPlot.on('plotly_click', async (time: string[]) => {
 
-        let date = time.points[0].text.slice(0, -1);
+        let date = time.points[0].text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/gm);
+        this.dateOfEvent.next(date);
 
+        this.isEventData.next(true);
+
+        // send call to service to get event data
         (await this.eventDataService.getEventData(date))
           .subscribe(event => {
 
-            console.log(event, 'event');
-
             this.eventDataService.loadEventData(event.eventData.metadata);
-
             this.waveService.plotWave(event.eventData.wave);
+
             return event
           });
 

@@ -3,11 +3,27 @@
     <img src="../../assets/SEISMICA_5.svg">
   </div>
   <div id="nav-items">
-    <div class="nav-item"><span class="material-symbols-outlined"> settings </span></div>
-    <div class="nav-item" (click)="handleHelpClick()"> <span class="material-symbols-outlined"> help </span></div>
+    <button class="nav-item" (click)="handleCompareClick()" routerLink="/comparison"><span
+        class="material-symbols-outlined"> difference
+      </span></button>
+    <button class="nav-item"><span class="material-symbols-outlined"> settings </span></button>
+    <button class="nav-item" (click)="handleHelpClick()"> <span class="material-symbols-outlined"> help
+      </span></button>
   </div>
 
 </div>
+
 <div id="tool-tip" *ngIf="isToolTipShowed">
-  lorem ipsum
+  <h3><span>Seismica</span> is an app for visualizing seismic data from IRIS web services: http://service.iris.edu/.
+  </h3>
+  <ul>
+    <li>Put dates and time into form and click 'start' button. The earthquakes from this period will show on the map.
+      Now you can choose the earthquake and see the seismic wave from this earthquake and additional data.</li>
+    <li>When you click and hold on the map with mouse movement from left to right you can spin the map.</li>
+    <li>If you are waiting too long for a data to show on the map try to send form with
+      different dates or magnitudes to narrow the data. It seems like there is too much to load.</li>
+    <li>You can save earthquake data and wave for later to make comparison of different earthquakes.</li>
+    <li>Not always data is available. Especially for old events there are no seismic data in the database. You will see
+      alert when this happen.</li>
+  </ul>
 </div>

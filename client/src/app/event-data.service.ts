@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,9 +10,7 @@ export class EventDataService {
 
   private baseURL = 'http://localhost:3000/eventData';
 
-  private event: any = {}; // (?)
-
-  public eventData$ = new BehaviorSubject<string[]>(this.data);
+  public eventData$ = new BehaviorSubject<string[]>(['']);
   public dataE = this.eventData$.asObservable();
 
   constructor(private http: HttpClient) { }
@@ -27,10 +24,9 @@ export class EventDataService {
     this.eventData$.next(eventData);
   }
 
-  retriveEventData() {
-    console.log(this.eventData$.getValue(), 'event data value from subscriber');
-    return this.eventData$.getValue();
-  }
+  // retriveEventData() {
+  //   return this.eventData$.getValue();
+  // }
 
 
 }

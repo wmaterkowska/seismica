@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ComparisonService } from '../comparison.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+
+  constructor(private comparisonService: ComparisonService) { }
 
   isToolTipShowed: boolean = false;
 
@@ -17,5 +20,12 @@ export class NavbarComponent {
       this.isToolTipShowed = false;
     }
   }
+
+  async handleCompareClick() {
+    let link = 'comparison'
+    // let link = await this.comparisonService.getDataToCompare();
+    return link;
+  }
+
 
 }

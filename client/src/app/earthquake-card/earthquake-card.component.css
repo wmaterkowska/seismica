@@ -32,19 +32,6 @@
   align-items: center;
 }
 
-#add-btn:visited {
-  display: flex;
-  height: 30px;
-  line-height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  border: none;
-  background-color: var(--pink);
-  text-align: center;
-  justify-content: baseline;
-  align-items: center;
-}
-
 #event-data-container {
   display: flex;
   flex-wrap: wrap;
