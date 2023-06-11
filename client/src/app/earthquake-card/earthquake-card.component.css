@@ -1,5 +1,33 @@
 @import "../../styles.css";
 
+#loading {
+  /* position: absolut  */
+  position: sticky;
+  left: 50%;
+  top: 70%;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid var(--blue);
+  width: 70px;
+  height: 70px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 #event-container {
   display: flex;
   flex-direction: column;
@@ -10,26 +38,13 @@
   margin-bottom: 2%;
 }
 
-#add-btn {
+#delete-btn {
   width: fit-content;
   border: none;
   background-color: white;
   margin-right: 0;
   margin-left: auto;
   color: grey;
-}
-
-#add-btn:focus {
-  display: flex;
-  height: 30px;
-  line-height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  border: none;
-  background-color: var(--pink);
-  text-align: center;
-  justify-content: baseline;
-  align-items: center;
 }
 
 #event-data-container {

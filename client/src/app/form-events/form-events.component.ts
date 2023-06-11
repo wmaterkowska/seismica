@@ -52,7 +52,6 @@ export class FormEventsComponent {
 
     this.service.getEvents(startDate, endDate, eventsDataObj.minMag, eventsDataObj.maxMag);
 
-    this.eventsForm.reset();
   }
 
 }

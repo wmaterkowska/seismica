@@ -1,3 +1,21 @@
-<ul *ngFor="let d of dates">
-  <app-earthquake-card [date]="d"></app-earthquake-card>
-</ul>
+<div id="comparison-container">
+  <div id="navbar-comparison">
+    <div id="logo-min">
+      <img src="../../assets/SEISMICA_5.svg">
+    </div>
+    <div id="nav-items-comp">
+      <button class="nav-item-comp" routerLink="/"><span class="material-symbols-outlined"> arrow_back_ios
+        </span></button>
+      <button class="nav-item-comp"><span class="material-symbols-outlined"> settings </span></button>
+    </div>
+
+  </div>
+
+  <div id="earthquake-card-container">
+
+    <ul *ngFor="let d of dates">
+      <app-earthquake-card [date]="d"></app-earthquake-card>
+    </ul>
+  </div>
+
+</div>

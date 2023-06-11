@@ -1,10 +1,8 @@
 //@ts-nocheck
 
 import { Component, Input, OnInit } from '@angular/core';
-import { ComparisonService } from '../comparison.service';
 import { EventDataService } from '../event-data.service';
 import { WaveService } from '../wave.service';
-import { earthquakeData } from '../earthquakesData';
 
 @Component({
   selector: 'app-earthquake-card',
@@ -18,8 +16,7 @@ export class EarthquakeCardComponent implements OnInit {
 
   data?: string[] = [];
 
-  constructor(private comparisonService: ComparisonService,
-    private eventDataService: EventDataService,
+  constructor(private eventDataService: EventDataService,
     private waveService: WaveService) { }
 
   ngOnInit(): void {
@@ -29,6 +26,7 @@ export class EarthquakeCardComponent implements OnInit {
 
 
   async showEventData() {
+    this.eventDataService.showloader();
 
     (await this.eventDataService.getEventData(this.date))
       .subscribe(evD => {
@@ -42,10 +40,15 @@ export class EarthquakeCardComponent implements OnInit {
 
         let dataSeparate: string[] = []
         evD.eventData.metadata.forEach(element => {
-          dataSeparate.push(...element.split(':'));
+          dataSeparate.push(...element.split(': '));
         });
 
-        this.eventDataService.loadEventData(dataSeparate);
+        this.data = dataSeparate;
+
+        this.eventDataService.loadEventData(evD.eventData.metadata);
+
+        this.eventDataService.hideloader();
+        return evD;
       });
 
   }
