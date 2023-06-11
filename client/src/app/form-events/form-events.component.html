@@ -1,37 +1,39 @@
 <div id="form-container">
-  <form [formGroup]="eventsForm" (ngSubmit)="handleSubmit()">
+  <form [formGroup]="eventsForm" (ngSubmit)="handleSubmit()" id="form">
     <p>Start Date</p>
     <label class="label" value="Year">Year</label>
-    <input class="input-date" type="number" min="1964" formControlName="startYear">
+    <input class="input-data" type="number" min="1964" formControlName="startYear">
 
     <label class="label" value="Month">Month</label>
-    <input class="input-date" type="number" min="1" max="12" formControlName="startMonth">
+    <input class="input-data" type="number" min="1" max="12" formControlName="startMonth">
 
     <label class="label" value="Day">Day</label>
-    <input class="input-date" type="number" min="1" max="31" formControlName="startDay">
+    <input class="input-data" type="number" min="1" max="31" formControlName="startDay">
 
     <label class="label" value="Time">Time (HH:MM:SS)</label>
     <input class="input-time" type="time" step="1" formControlName="startTime">
 
+    <div class="separator">|</div>
     <label class="label" value="Min Magnitude">Min Magnitude</label>
-    <input class="input-date" type="number" min="0" max="10" step="0.01" formControlName="minMag">
+    <input class="input-data magnitude" type="number" min="0" max="10" step="0.01" formControlName="minMag">
 
 
     <p>End Date</p>
     <label class="label" value="Year">Year</label>
-    <input class="input-date" type="number" min="1964" formControlName="endYear">
+    <input class="input-data" type="number" min="1964" formControlName="endYear">
 
     <label class="label" value="Month">Month</label>
-    <input class="input-date" type="number" min="1" max="12" formControlName="endMonth">
+    <input class="input-data" type="number" min="1" max="12" formControlName="endMonth">
 
     <label class="label" value="Day">Day</label>
-    <input class="input-date" type="number" min="1" max="31" formControlName="endDay">
+    <input class="input-data" type="number" min="1" max="31" formControlName="endDay">
 
     <label class="label" value="Time">Time (HH:MM:SS)</label>
     <input class="input-time" type="time" step="1" formControlName="endTime">
 
+    <div class="separator">|</div>
     <label class="label" value="Max Magnitude">Max Magnitude</label>
-    <input class="input-date" type="number" min="0" max="10" step="0.01" formControlName="maxMag">
+    <input class="input-data magnitude" type="number" min="0" max="10" step="0.01" formControlName="maxMag">
 
     <button id="submit-btn" type="submit">Start</button>
 
