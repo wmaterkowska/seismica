@@ -21,7 +21,7 @@ export class EventDataComponent implements OnInit {
       if (evD) {
 
         evD.splice(1, 1);
-        evD.splice(-1, 1)
+        evD.splice(-1, 1);
 
         let dataSeparately: string[] = [];
         evD.forEach((data) => {

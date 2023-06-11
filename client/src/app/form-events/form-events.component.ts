@@ -15,8 +15,8 @@ export class FormEventsComponent {
     startDay: new FormControl(1, [Validators.required]),
     startTime: new FormControl('00:00:00', [Validators.required]),
     endYear: new FormControl(new Date().getFullYear(), [Validators.required]),
-    endMonth: new FormControl(new Date().getMonth(), [Validators.required]),
-    endDay: new FormControl(new Date().getDay(), [Validators.required]),
+    endMonth: new FormControl(new Date().getMonth() + 1, [Validators.required]),
+    endDay: new FormControl(new Date().getDate(), [Validators.required]),
     endTime: new FormControl('00:00:00', [Validators.required]),
     minMag: new FormControl<number>(8, { validators: [Validators.required], nonNullable: true }),
     maxMag: new FormControl<number>(10, { validators: [Validators.required], nonNullable: true }),
@@ -52,7 +52,6 @@ export class FormEventsComponent {
 
     this.service.getEvents(startDate, endDate, eventsDataObj.minMag, eventsDataObj.maxMag);
 
-    this.eventsForm.reset();
   }
 
 }
