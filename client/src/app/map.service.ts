@@ -106,6 +106,8 @@ export class MapService {
     if (myPlot !== null) {
       myPlot.on('plotly_click', async (time: string[]) => {
 
+        this.eventDataService.showloader();
+
         let date = time.points[0].text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/gm);
         this.dateOfEvent.next(date);
 
@@ -118,8 +120,10 @@ export class MapService {
             this.eventDataService.loadEventData(event.eventData.metadata);
             this.waveService.plotWave(event.eventData.wave);
 
+            this.eventDataService.hideloader();
             return event
           });
+
 
       });
     }
