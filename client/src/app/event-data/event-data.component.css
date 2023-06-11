@@ -37,16 +37,30 @@
   margin-bottom: 2%;
 }
 
-#add-btn {
+.add-btn {
   width: fit-content;
   border: none;
-  background-color: white;
   margin-right: 0;
   margin-left: auto;
   color: grey;
+  display: flex;
+  height: 30px;
+  line-height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+  text-align: center;
+  justify-content: baseline;
+  align-items: center;
 }
 
-#add-btn:focus {
+.clicked {
+  width: fit-content;
+  border: none;
+  margin-right: 0;
+  margin-left: auto;
+  color: grey;
   display: flex;
   height: 30px;
   line-height: 30px;
@@ -59,18 +73,6 @@
   align-items: center;
 }
 
-#add-btn:visited {
-  display: flex;
-  height: 30px;
-  line-height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  border: none;
-  background-color: var(--pink);
-  text-align: center;
-  justify-content: baseline;
-  align-items: center;
-}
 
 #event-data-container {
   display: flex;
