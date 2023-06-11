@@ -15,10 +15,6 @@ export class EventDataComponent implements OnInit {
 
   @Input()
   data?: string[] = [];
-  // toCompare: string[] = [];
-
-  // toCompare: BehaviorSubject<string[]> = new BehaviorSubject(['']);
-  // toCompare$: Observable<string[]> = this.toCompare.asObservable();
 
   ngOnInit(): void {
     this.dataService.dataE.subscribe(evD => {
