@@ -16,6 +16,8 @@ export class EventDataComponent implements OnInit {
   @Input()
   data?: string[] = [];
 
+  clicked: boolean = false;
+
   ngOnInit(): void {
     this.dataService.dataE.subscribe(evD => {
       if (evD) {
@@ -29,21 +31,48 @@ export class EventDataComponent implements OnInit {
         });
 
         this.data = dataSeparately;
+
+        let button = document.getElementById('add-btn');
+        if (button) {
+          button.classList.replace('clicked', 'add-btn');
+        }
+        this.clicked = false;
       }
     });
   }
 
 
   addToCompare() {
-    let dat = '';
-    this.mapService.dateOfEvent$.subscribe(d => { dat = d });
-    if (this.comparisonService.toCompare.getValue().length < 4) {
-      console.log(dat, 'dat----------------------------')
-      this.comparisonService.toCompare.next(this.comparisonService.toCompare.getValue().concat(dat))
+
+    if (this.clicked === false) {
+
+      let dat = '';
+      this.mapService.dateOfEvent$.subscribe(d => { dat = d });
+      if (this.comparisonService.toCompare.getValue().length < 4) {
+        this.comparisonService.toCompare.next(this.comparisonService.toCompare.getValue().concat(dat))
+      } else {
+        alert('You reached the limit of earthquakes to compare.')
+      }
+
+      let button = document.getElementById('add-btn');
+      if (button) {
+        button.classList.replace('add-btn', 'clicked');
+      }
+      this.clicked = true;
     } else {
-      alert('You reached the limit of earthquakes to compare.')
+      let newToCompare = this.comparisonService.toCompare.getValue().filter((date) => date !== date);
+      this.comparisonService.toCompare.next(newToCompare);
+
+      let button = document.getElementById('add-btn');
+      if (button) {
+        button.classList.replace('clicked', 'add-btn');
+      }
+      this.clicked = false;
     }
-    console.log(this.comparisonService.toCompare.getValue());
+
+    console.log(this.comparisonService.toCompare.getValue(), 'to compare');
+
   }
+
 
 }
