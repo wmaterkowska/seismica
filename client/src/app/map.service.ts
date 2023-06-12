@@ -105,11 +105,20 @@ export class MapService {
     let myPlot = document.getElementById('map');
 
     if (myPlot !== null) {
-      myPlot.on('plotly_click', async (time: string[]) => {
+      myPlot.on('plotly_click', async (data, time: string[]) => {
+
+        //-----------------------------------------------
+
+        let pt = data.points[0].pointNumber;
+        magnitudes[pt] = 'grey'
+        Plotly.restyle('map', 'marker.line.color', [magnitudes]);
+
+        //-------------------------------
+
 
         this.eventDataService.showloader();
 
-        let date = time.points[0].text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/gm);
+        let date = data.points[0].text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/gm);
         this.dateOfEvent.next(date);
 
         this.isEventData.next(true);

@@ -1,6 +1,6 @@
 <div id="form-container">
   <form ngNativeValidate [formGroup]="eventsForm" (ngSubmit)="handleSubmit()" id="form">
-    <p>Start Date</p>
+    <p class="title-form">Start Date</p>
     <label class="label" value="Year">Year</label>
     <input class="input-data" type="number" min="1964" formControlName="startYear" required>
 
@@ -14,11 +14,11 @@
     <input class="input-time" type="time" step="1" formControlName="startTime" required>
 
     <div class="separator">|</div>
-    <label class="label" value="Min Magnitude">Min Magnitude</label>
+    <label class="label mag-label" value="Min Magnitude">Min Magnitude</label>
     <input class="input-data magnitude" type="number" min="0" max="10" step="0.01" formControlName="minMag" required>
 
 
-    <p>End Date</p>
+    <p class="title-form">End Date</p>
     <label class="label" value="Year">Year</label>
     <input class="input-data" type="number" min="1964" formControlName="endYear" required>
 
@@ -32,7 +32,7 @@
     <input class="input-time" type="time" step="1" formControlName="endTime" required>
 
     <div class="separator">|</div>
-    <label class="label" value="Max Magnitude">Max Magnitude</label>
+    <label class="label mag-label" value="Max Magnitude">Max Magnitude</label>
     <input class="input-data magnitude" type="number" min="0" max="10" step="0.01" formControlName="maxMag" required>
 
     <button id="submit-btn" type="submit" title="Start">Start</button>
