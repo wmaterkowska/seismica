@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import { EventDataService } from './event-data.service';
 import { WaveService } from './wave.service';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { trigger } from '@angular/animations';
 declare let Plotly: any;
 
 @Injectable({

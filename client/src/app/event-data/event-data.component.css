@@ -82,7 +82,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
 }
 
 #data-list {
@@ -90,12 +90,21 @@
   flex-direction: row;
   flex-wrap: wrap;
   list-style-type: none;
+  justify-content: start;
+  align-items: start;
 }
 
 .data-element {
-  display: flex;
-  margin: 10px;
+  display: inline-block;
+  margin-top: 5px;
 }
+
+#data-list:nth-child(1),
+#data-list:nth-child(2),
+#data-list:nth-child(3) {
+  font-size: large;
+}
+
 
 #data-list:nth-child(1),
 #data-list:nth-child(2),

@@ -15,9 +15,6 @@
   animation: spin 2s linear infinite;
 }
 
-/* .loading {
-  border: 5px
-} */
 
 @keyframes spin {
   0% {
@@ -28,7 +25,6 @@
     transform: rotate(360deg);
   }
 }
-
 
 #event-container {
   display: flex;
@@ -59,7 +55,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
 }
 
 #data-list {
@@ -71,7 +67,12 @@
 
 .data-element {
   display: flex;
-  margin: 10px;
+}
+
+#data-list:nth-child(1),
+#data-list:nth-child(2),
+#data-list:nth-child(3) {
+  font-size: large;
 }
 
 #data-list:nth-child(1),

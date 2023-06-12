@@ -7,10 +7,10 @@
     <div class="loading"> </div>
   </div>
 
-  <div id="event-data-container">
+  <div *ngIf="dataLoaded" id="event-data-container">
     <ul *ngFor="let d of data" id="data-list">
       <li class="data-element">{{d}}</li>
     </ul>
   </div>
-  <div id='wave'></div>
+  <div [hidden]="!dataLoaded" id='wave'></div>
 </div>
