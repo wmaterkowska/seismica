@@ -1,0 +1,6 @@
+#map-container {
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  align-content: center;
+}

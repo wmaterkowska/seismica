@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { EventsService } from '../events.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class FormEventsComponent {
     endTime: new FormControl('00:00:00', [Validators.required]),
     minMag: new FormControl<number>(8, { validators: [Validators.required], nonNullable: true }),
     maxMag: new FormControl<number>(10, { validators: [Validators.required], nonNullable: true }),
-  })
+  }, { validators: this.dateValidator })
 
 
   constructor(private formBuilder: FormBuilder, private service: EventsService) { }
@@ -50,8 +50,20 @@ export class FormEventsComponent {
     let endDate = `${eventsDataObj.endYear}-${endMonth}-${endDay}T${eventsDataObj.endTime}`;
 
 
-    this.service.getEvents(startDate, endDate, eventsDataObj.minMag, eventsDataObj.maxMag);
-
+    // form validation if sdate smaller then edate and minMag smaller then maxMag
+    if (new Date(startDate) > new Date(endDate)) {
+      alert('Start Date have to be before End Date.');
+    } else if (eventsDataObj.minMag > eventsDataObj.maxMag) {
+      alert('Min Magnitude should be smaller then Max Mgnitude.')
+    } else {
+      this.service.getEvents(startDate, endDate, eventsDataObj.minMag, eventsDataObj.maxMag);
+    }
   }
 
+
+  dateValidator(control: AbstractControl): ValidationErrors | null {
+    const sYear = control.get('startYear')
+    const eYear = control.get('endYear');
+    return sYear !== null && eYear !== null && sYear < eYear ? null : { dateValid: true };
+  }
 }

@@ -3,27 +3,28 @@
     <img src="../../assets/SEISMICA_5.svg">
   </div>
   <div id="nav-items">
-    <button class="nav-item" (click)="handleCompareClick()" routerLink="/comparison"><span
+    <button class="nav-item" (click)="handleCompareClick()" routerLink="/comparison" title="Go to comparison"><span
         class="material-symbols-outlined"> difference
       </span></button>
-    <button class="nav-item"><span class="material-symbols-outlined"> settings </span></button>
-    <button class="nav-item" (click)="handleHelpClick()"> <span class="material-symbols-outlined"> help
+    <button class="nav-item"><span class="material-symbols-outlined" title="Settings"> settings </span></button>
+    <button class="nav-item" (click)="handleHelpClick()" title="About"> <span class="material-symbols-outlined"> help
       </span></button>
   </div>
 
 </div>
 
 <div id="tool-tip" *ngIf="isToolTipShowed">
-  <h3><span>Seismica</span> is an app for visualizing seismic data from IRIS web services: http://service.iris.edu/.
-  </h3>
-  <ul>
-    <li>Put dates and time into form and click 'start' button. The earthquakes from this period will show on the map.
-      Now you can choose the earthquake and see the seismic wave from this earthquake and additional data.</li>
-    <li>When you click and hold on the map with mouse movement from left to right you can spin the map.</li>
-    <li>If you are waiting too long for a data to show on the map try to send form with
-      different dates or magnitudes to narrow the data. It seems like there is too much to load.</li>
-    <li>You can save earthquake data and wave for later to make comparison of different earthquakes.</li>
-    <li>Not always data is available. Especially for old events there are no seismic data in the database. You will see
-      alert when this happen.</li>
+  <h3><span>Seismica</span> is an awesome app that lets you see seismic data from IRIS web services:
+    http://service.iris.edu/.</h3>
+  <p>Just enter the dates and time and the magnitudes in the form and hit the 'start' button. You'll see earthquakes
+    from that period
+    displayed on the map. Now you can select an earthquake to view its seismic wave and other details.</p>
+  <ul class="list">
+    <li>To rotate the map, simply click and hold on the map while moving your mouse from left to right.</li>
+    <li>If you're waiting too long for the data to load on the map, try submitting the form with different dates or
+      magnitudes to narrow down the results. Sometimes there's just too much information to load at once.</li>
+    <li>You can also save earthquake data and waves for later, allowing you to compare different earthquakes.</li>
+    <li>Please note that data isn't always available, especially for older events where seismic data might not be stored
+      in the database. You'll receive an alert if this happens.</li>
   </ul>
 </div>

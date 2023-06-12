@@ -63,6 +63,7 @@ export class MapService {
         showland: true,
         landcolor: 'rgb(217, 217, 217)',
       },
+      paper_bgcolor: 'rgba(0,0,0,0)',
       width: 1100,
       height: 700,
       lataxis: {
