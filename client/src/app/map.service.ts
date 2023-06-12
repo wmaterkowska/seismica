@@ -17,6 +17,12 @@ export class MapService {
   dateOfEvent: Subject<string> = new BehaviorSubject('');
   dateOfEvent$: Observable<string> = this.dateOfEvent.asObservable();
 
+  textOfEvent: BehaviorSubject<string> = new BehaviorSubject('');
+  // textOfEvent$: Observable<string> = this.textOfEvent.asObservable();
+
+  dataLoaded: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+
   constructor(private eventDataService: EventDataService, private waveService: WaveService) { }
 
   async plotMap(earthquakes: any) {
@@ -113,12 +119,13 @@ export class MapService {
         Plotly.restyle('map', 'marker.line.color', [magnitudes]);
 
         //show loader until it loads the data
-        this.eventDataService.showloader();
+        // this.eventDataService.showloader();
 
 
         //retrieve date from text on map
         let date = data.points[0].text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/gm);
         this.dateOfEvent.next(date);
+        this.textOfEvent.next(data.points[0].text);
 
         this.isEventData.next(true);
 
@@ -134,7 +141,8 @@ export class MapService {
             this.eventDataService.loadEventData(dataToShow);
             this.waveService.plotWave(event.eventData.wave);
 
-            this.eventDataService.hideloader();
+            // this.eventDataService.hideloader();
+            this.dataLoaded.next(true);
             return event
           });
 

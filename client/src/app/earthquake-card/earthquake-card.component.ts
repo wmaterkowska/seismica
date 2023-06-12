@@ -3,6 +3,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EventDataService } from '../event-data.service';
 import { WaveService } from '../wave.service';
+import { ComparisonService } from '../comparison.service';
 
 @Component({
   selector: 'app-earthquake-card',
@@ -16,8 +17,11 @@ export class EarthquakeCardComponent implements OnInit {
 
   data?: string[] = [];
 
+  dataLoaded: boolean = false;
+
   constructor(private eventDataService: EventDataService,
-    private waveService: WaveService) { }
+    private waveService: WaveService,
+    private comparisonService: ComparisonService) { }
 
   ngOnInit(): void {
 
@@ -26,29 +30,34 @@ export class EarthquakeCardComponent implements OnInit {
 
 
   async showEventData() {
-    this.eventDataService.showloader();
+
+    // this.eventDataService.showloader(this.date);
+
+
+    const eventsToCompare = this.comparisonService.toCompare.getValue()
+    let text: string = '';
+    for (let i = 0; i < eventsToCompare.length; i++) {
+      if (eventsToCompare[i][0] === this.date) {
+        text = eventsToCompare[i][1];
+      }
+    }
 
     (await this.eventDataService.getEventData(this.date))
-      .subscribe(evD => {
+      .subscribe((evD) => {
 
-        console.log(evD, 'data earthquake card');
-        this.data = evD.eventData.metadata;
         this.waveService.plotWave(evD.eventData.wave, this.date);
 
-        evD.eventData.metadata.splice(1, 1);
-        evD.eventData.metadata.splice(-1, 1);
+        let dataToLoad = [text, ...evD.eventData.metadata]
 
-        let dataSeparate: string[] = []
-        evD.eventData.metadata.forEach(element => {
-          dataSeparate.push(...element.split(': '));
-        });
+        this.eventDataService.loadEventData(dataToLoad);
+        this.eventDataService.dataE.subscribe(dta => {
+          const dataToShow = this.eventDataService.prepareData(dta);
+          this.data = dataToShow;
+        })
 
-        this.data = dataSeparate;
-
-        this.eventDataService.loadEventData(evD.eventData.metadata);
-
-        this.eventDataService.hideloader();
-        console.log('end of code')
+        console.log('end of code');
+        this.dataLoaded = true;
+        // this.eventDataService.hideloader(this.date);
         return evD;
       });
 

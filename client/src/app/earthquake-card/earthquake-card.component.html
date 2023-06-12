@@ -3,8 +3,8 @@
     <span class="material-symbols-outlined">close</span>
   </button>
 
-  <div id="loader-container">
-    <div id="loading"> </div>
+  <div *ngIf="!dataLoaded" class="loader-container">
+    <div class="loading"> </div>
   </div>
 
   <div id="event-data-container">

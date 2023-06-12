@@ -1,10 +1,11 @@
 @import "../../styles.css";
 
-#loader-container {
+.loader-container {
   display: flex;
 }
 
-#loading {
+.loading {
+  display: inline;
   width: 50px;
   height: 50px;
   margin: 0 auto;
@@ -13,6 +14,10 @@
   border-top: 10px solid var(--blue);
   animation: spin 2s linear infinite;
 }
+
+/* .loading {
+  border: 5px
+} */
 
 @keyframes spin {
   0% {
@@ -69,12 +74,41 @@
   margin: 10px;
 }
 
-#data-list:nth-child(odd) {
-  display: flex;
+#data-list:nth-child(1),
+#data-list:nth-child(2),
+#data-list:nth-child(3),
+#data-list:nth-child(6),
+#data-list:nth-child(15),
+#data-list:nth-child(22),
+#data-list:nth-child(29) {
   font-weight: bold;
   color: var(--blue);
 }
 
-#data-list:nth-child(2n) {
-  display: flex;
+#data-list:nth-child(4),
+#data-list:nth-child(7),
+#data-list:nth-child(9),
+#data-list:nth-child(11),
+#data-list:nth-child(13),
+#data-list:nth-child(16),
+#data-list:nth-child(18),
+#data-list:nth-child(20),
+#data-list:nth-child(23),
+#data-list:nth-child(25),
+#data-list:nth-child(27),
+#data-list:nth-child(30),
+#data-list:nth-child(32),
+#data-list:nth-child(34),
+#data-list:nth-child(36),
+#data-list:nth-child(38),
+#data-list:nth-child(40) {
+  color: var(--blue);
+}
+
+
+#data-list:nth-child(6),
+#data-list:nth-child(15),
+#data-list:nth-child(22),
+#data-list:nth-child(29) {
+  flex-basis: 100%;
 }
