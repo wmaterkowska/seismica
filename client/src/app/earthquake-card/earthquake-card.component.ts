@@ -19,6 +19,8 @@ export class EarthquakeCardComponent implements OnInit {
 
   dataLoaded: boolean = false;
 
+  isShown: boolean = true;
+
   constructor(private eventDataService: EventDataService,
     private waveService: WaveService,
     private comparisonService: ComparisonService) { }
@@ -30,9 +32,6 @@ export class EarthquakeCardComponent implements OnInit {
 
 
   async showEventData() {
-
-    // this.eventDataService.showloader(this.date);
-
 
     const eventsToCompare = this.comparisonService.toCompare.getValue()
     let text: string = '';
@@ -57,12 +56,20 @@ export class EarthquakeCardComponent implements OnInit {
 
         console.log('end of code');
         this.dataLoaded = true;
-        // this.eventDataService.hideloader(this.date);
         return evD;
       });
 
   }
 
+
+
+  deleteClick() {
+    console.log(this.comparisonService.toCompare.getValue(), 'beginning');
+    this.isShown = false;
+    let newToCompare = this.comparisonService.toCompare.getValue().filter(dat => dat[0] !== this.date)
+    this.comparisonService.toCompare.next(newToCompare);
+    console.log(this.comparisonService.toCompare.getValue(), 'end');
+  }
 
 
 }
