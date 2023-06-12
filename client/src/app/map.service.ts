@@ -17,6 +17,11 @@ export class MapService {
   dateOfEvent: Subject<string> = new BehaviorSubject('');
   dateOfEvent$: Observable<string> = this.dateOfEvent.asObservable();
 
+  textOfEvent: BehaviorSubject<string> = new BehaviorSubject('');
+
+  dataLoaded: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
+
   constructor(private eventDataService: EventDataService, private waveService: WaveService) { }
 
   async plotMap(earthquakes: any) {
@@ -105,23 +110,38 @@ export class MapService {
     let myPlot = document.getElementById('map');
 
     if (myPlot !== null) {
-      myPlot.on('plotly_click', async (time: string[]) => {
+      myPlot.on('plotly_click', async (data, time: string[]) => {
 
-        this.eventDataService.showloader();
+        // change color of the mark on map
+        let pt = data.points[0].pointNumber;
+        magnitudes[pt] = 'grey'
+        Plotly.restyle('map', 'marker.line.color', [magnitudes]);
 
-        let date = time.points[0].text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/gm);
+        //show loader until it loads the data
+        // this.eventDataService.showloader();
+        this.dataLoaded.next(false);
+
+        //retrieve date from text on map
+        let date = data.points[0].text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/gm);
         this.dateOfEvent.next(date);
+        this.textOfEvent.next(data.points[0].text);
 
         this.isEventData.next(true);
+
+        let dataToShow: string[] = []
+        dataToShow.push(data.points[0].text);
 
         // send call to service to get event data
         (await this.eventDataService.getEventData(date))
           .subscribe(event => {
 
-            this.eventDataService.loadEventData(event.eventData.metadata);
+            dataToShow.push(...event.eventData.metadata);
+
+            this.eventDataService.loadEventData(dataToShow);
             this.waveService.plotWave(event.eventData.wave);
 
-            this.eventDataService.hideloader();
+            // this.eventDataService.hideloader();
+            this.dataLoaded.next(true);
             return event
           });
 

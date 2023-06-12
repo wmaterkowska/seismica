@@ -21,6 +21,11 @@
   gap: 1%;
 }
 
+.title-form {
+  color: var(--blue);
+  margin-top: 1%;
+}
+
 #form>* {
   margin: 5px;
 }
@@ -51,6 +56,10 @@ input {
 .magnitude {
   align-self: flex-end;
   max-width: 60px;
+}
+
+.mag-label {
+  color: var(--blue);
 }
 
 .separator {

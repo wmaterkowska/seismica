@@ -1,18 +1,16 @@
-<div>
-  <div>
-    <span id="loading"> </span>
+<div id="event-container">
+  <button id="delete-btn">
+    <span class="material-symbols-outlined">close</span>
+  </button>
+
+  <div *ngIf="!dataLoaded" class="loader-container">
+    <div class="loading"> </div>
   </div>
 
-
-  <div id="event-container">
-    <button id="delete-btn">
-      <span class="material-symbols-outlined">close</span>
-    </button>
-    <div id="event-data-container">
-      <ul *ngFor="let d of data" id="data-list">
-        <li class="data-element">{{d}}</li>
-      </ul>
-    </div>
-    <div id='wave{{date}}'></div>
+  <div id="event-data-container">
+    <ul *ngFor="let d of data" id="data-list">
+      <li class="data-element">{{d}}</li>
+    </ul>
   </div>
+  <div id='wave{{date}}'></div>
 </div>

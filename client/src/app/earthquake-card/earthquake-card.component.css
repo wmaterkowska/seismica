@@ -1,21 +1,20 @@
 @import "../../styles.css";
 
-#loading {
-  /* position: absolut  */
-  position: sticky;
-  left: 50%;
-  top: 70%;
-  z-index: 1;
-  width: 100px;
-  height: 100px;
-  margin: -75px 0 0 -75px;
-  border: 16px solid #f3f3f3;
+.loader-container {
+  display: flex;
+}
+
+.loading {
+  display: inline;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  border: 10px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid var(--blue);
-  width: 70px;
-  height: 70px;
+  border-top: 10px solid var(--blue);
   animation: spin 2s linear infinite;
 }
+
 
 @keyframes spin {
   0% {
@@ -27,15 +26,19 @@
   }
 }
 
-
 #event-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: 1px lightgrey solid;
-  border-radius: 10px;
   padding: 3%;
   margin-bottom: 2%;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 #delete-btn {
@@ -52,7 +55,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
 }
 
 #data-list {
@@ -64,15 +67,49 @@
 
 .data-element {
   display: flex;
-  margin: 10px;
 }
 
-#data-list:nth-child(odd) {
-  display: flex;
+#data-list:nth-child(1),
+#data-list:nth-child(2),
+#data-list:nth-child(3) {
+  font-size: large;
+}
+
+#data-list:nth-child(1),
+#data-list:nth-child(2),
+#data-list:nth-child(3),
+#data-list:nth-child(6),
+#data-list:nth-child(15),
+#data-list:nth-child(22),
+#data-list:nth-child(29) {
   font-weight: bold;
   color: var(--blue);
 }
 
-#data-list:nth-child(2n) {
-  display: flex;
+#data-list:nth-child(4),
+#data-list:nth-child(7),
+#data-list:nth-child(9),
+#data-list:nth-child(11),
+#data-list:nth-child(13),
+#data-list:nth-child(16),
+#data-list:nth-child(18),
+#data-list:nth-child(20),
+#data-list:nth-child(23),
+#data-list:nth-child(25),
+#data-list:nth-child(27),
+#data-list:nth-child(30),
+#data-list:nth-child(32),
+#data-list:nth-child(34),
+#data-list:nth-child(36),
+#data-list:nth-child(38),
+#data-list:nth-child(40) {
+  color: var(--blue);
+}
+
+
+#data-list:nth-child(6),
+#data-list:nth-child(15),
+#data-list:nth-child(22),
+#data-list:nth-child(29) {
+  flex-basis: 100%;
 }
