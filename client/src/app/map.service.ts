@@ -118,8 +118,13 @@ export class MapService {
         Plotly.restyle('map', 'marker.line.color', [magnitudes]);
 
         //show loader until it loads the data
-        // this.eventDataService.showloader();
         this.dataLoaded.next(false);
+
+        let button = document.getElementById('add-btn');
+        if (button) {
+          button.classList.replace('clicked', 'add-btn');
+        }
+
 
         //retrieve date from text on map
         let date = data.points[0].text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/gm);
