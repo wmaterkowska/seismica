@@ -1,19 +1,16 @@
 @import "../../styles.css";
 
+#loader-container {
+  display: flex;
+}
+
 #loading {
-  /* position: absolut  */
-  position: fixed;
-  left: 50%;
-  top: 70%;
-  z-index: 1;
-  width: 100px;
-  height: 100px;
-  margin: -75px 0 0 -75px;
-  border: 16px solid #f3f3f3;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  border: 10px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid var(--blue);
-  width: 70px;
-  height: 70px;
+  border-top: 10px solid var(--blue);
   animation: spin 2s linear infinite;
 }
 
@@ -55,7 +52,7 @@
   width: 30px;
   border-radius: 50%;
   border: none;
-  background-color: white;
+  background-color: transparent;
   text-align: center;
   justify-content: baseline;
   align-items: center;
@@ -83,7 +80,7 @@
 #event-data-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   max-width: 900px;
 }
@@ -100,7 +97,51 @@
   margin: 10px;
 }
 
-#data-list:nth-child(odd) {
+#data-list:nth-child(1),
+#data-list:nth-child(2),
+#data-list:nth-child(3),
+#data-list:nth-child(6),
+#data-list:nth-child(15),
+#data-list:nth-child(22),
+#data-list:nth-child(29) {
+  font-weight: bold;
+  color: var(--blue);
+}
+
+#data-list:nth-child(4),
+#data-list:nth-child(7),
+#data-list:nth-child(9),
+#data-list:nth-child(11),
+#data-list:nth-child(13),
+#data-list:nth-child(16),
+#data-list:nth-child(18),
+#data-list:nth-child(20),
+#data-list:nth-child(23),
+#data-list:nth-child(25),
+#data-list:nth-child(27),
+#data-list:nth-child(30),
+#data-list:nth-child(32),
+#data-list:nth-child(34),
+#data-list:nth-child(36),
+#data-list:nth-child(38),
+#data-list:nth-child(40) {
+  color: var(--blue);
+}
+
+
+#data-list:nth-child(6),
+#data-list:nth-child(15),
+#data-list:nth-child(22),
+#data-list:nth-child(29) {
+  flex-basis: 100%;
+}
+
+/* #data-list:nth-child(4) {
+  flex-basis: 50%;
+} */
+
+
+/* #data-list:nth-child(odd) {
   display: flex;
   font-weight: bold;
   color: var(--blue);
@@ -108,4 +149,4 @@
 
 #data-list:nth-child(2n) {
   display: flex;
-}
+} */

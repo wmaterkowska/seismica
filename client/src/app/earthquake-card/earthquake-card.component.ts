@@ -35,8 +35,8 @@ export class EarthquakeCardComponent implements OnInit {
         this.data = evD.eventData.metadata;
         this.waveService.plotWave(evD.eventData.wave, this.date);
 
-        evD.EventData.metadata.splice(1, 1);
-        evD.EventData.metadata.splice(-1, 1);
+        evD.eventData.metadata.splice(1, 1);
+        evD.eventData.metadata.splice(-1, 1);
 
         let dataSeparate: string[] = []
         evD.eventData.metadata.forEach(element => {
@@ -48,6 +48,7 @@ export class EarthquakeCardComponent implements OnInit {
         this.eventDataService.loadEventData(evD.eventData.metadata);
 
         this.eventDataService.hideloader();
+        console.log('end of code')
         return evD;
       });
 

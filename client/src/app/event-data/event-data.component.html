@@ -1,18 +1,16 @@
-<div id="container">
-  <div>
-    <span id="loading"> </span>
+<div id="event-container">
+  <button id="add-btn" class="add-btn" (click)="addToCompare()">
+    <span class="material-symbols-outlined">bookmark_add</span>
+  </button>
+
+  <div id="loader-container">
+    <div id="loading"> </div>
   </div>
 
-
-  <div id="event-container">
-    <button id="add-btn" class="add-btn" (click)="addToCompare()">
-      <span class="material-symbols-outlined">bookmark_add</span>
-    </button>
-    <div id="event-data-container">
-      <ul *ngFor="let d of data" id="data-list">
-        <li class="data-element">{{d}}</li>
-      </ul>
-    </div>
-    <div id='wave'></div>
+  <div id="event-data-container">
+    <ul *ngFor="let d of data" id="data-list">
+      <li class="data-element">{{d}}</li>
+    </ul>
   </div>
+  <div id='wave'></div>
 </div>

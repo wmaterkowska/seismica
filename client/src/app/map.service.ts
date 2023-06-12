@@ -107,27 +107,31 @@ export class MapService {
     if (myPlot !== null) {
       myPlot.on('plotly_click', async (data, time: string[]) => {
 
-        //-----------------------------------------------
-
+        // change color of the mark on map
         let pt = data.points[0].pointNumber;
         magnitudes[pt] = 'grey'
         Plotly.restyle('map', 'marker.line.color', [magnitudes]);
 
-        //-------------------------------
-
-
+        //show loader until it loads the data
         this.eventDataService.showloader();
 
+
+        //retrieve date from text on map
         let date = data.points[0].text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/gm);
         this.dateOfEvent.next(date);
 
         this.isEventData.next(true);
 
+        let dataToShow: string[] = []
+        dataToShow.push(data.points[0].text);
+
         // send call to service to get event data
         (await this.eventDataService.getEventData(date))
           .subscribe(event => {
 
-            this.eventDataService.loadEventData(event.eventData.metadata);
+            dataToShow.push(...event.eventData.metadata);
+
+            this.eventDataService.loadEventData(dataToShow);
             this.waveService.plotWave(event.eventData.wave);
 
             this.eventDataService.hideloader();
