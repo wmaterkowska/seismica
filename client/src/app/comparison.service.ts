@@ -12,9 +12,6 @@ import { earthquakeData } from './earthquakesData';
 export class ComparisonService {
 
   toCompare: BehaviorSubject<Array<any>> = new BehaviorSubject([]);
-  // toCompare$: Observable<string[]> = this.toCompare.asObservable();
-
-  // @Input() earthquakesD: string[][] = [];
   earthquakesD: BehaviorSubject<earthquakeData[]> = new BehaviorSubject([]);
 
   eventsD: [] = [];

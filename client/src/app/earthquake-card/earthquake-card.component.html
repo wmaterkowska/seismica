@@ -1,6 +1,6 @@
-<div id="event-container">
+<div *ngIf="isShown" id="event-container">
   <button id="delete-btn">
-    <span class="material-symbols-outlined">close</span>
+    <span class="material-symbols-outlined" (click)="deleteClick()">close</span>
   </button>
 
   <div *ngIf="!dataLoaded" class="loader-container">
