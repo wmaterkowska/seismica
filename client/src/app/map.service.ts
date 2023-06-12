@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { EventDataService } from './event-data.service';
 import { WaveService } from './wave.service';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { trigger } from '@angular/animations';
 declare let Plotly: any;
 
 @Injectable({
@@ -18,7 +19,6 @@ export class MapService {
   dateOfEvent$: Observable<string> = this.dateOfEvent.asObservable();
 
   textOfEvent: BehaviorSubject<string> = new BehaviorSubject('');
-  // textOfEvent$: Observable<string> = this.textOfEvent.asObservable();
 
   dataLoaded: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -120,7 +120,7 @@ export class MapService {
 
         //show loader until it loads the data
         // this.eventDataService.showloader();
-
+        this.dataLoaded.next(false);
 
         //retrieve date from text on map
         let date = data.points[0].text.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z/gm);

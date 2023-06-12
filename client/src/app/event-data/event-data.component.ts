@@ -17,11 +17,10 @@ export class EventDataComponent implements OnInit {
   data?: string[] = [];
 
   clicked: boolean = false;
-  dataLoaded: boolean = false;
+  dataLoaded: boolean = true;
 
   ngOnInit(): void {
 
-    // this.dataLoaded = this.mapService.dataLoaded.getValue();
     this.mapService.dataLoaded.subscribe(dL => this.dataLoaded = dL);
 
     this.eventDataService.dataE.subscribe(evD => {
@@ -38,6 +37,7 @@ export class EventDataComponent implements OnInit {
         this.clicked = false;
       }
     });
+
   }
 
 
