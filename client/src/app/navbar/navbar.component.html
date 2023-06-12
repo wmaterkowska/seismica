@@ -14,17 +14,18 @@
 </div>
 
 <div id="tool-tip" *ngIf="isToolTipShowed">
-  <h3><span>Seismica</span> is an awesome app that lets you see seismic data from IRIS web services:
-    http://service.iris.edu/.</h3>
-  <p>Just enter the dates and time and the magnitudes in the form and hit the 'start' button. You'll see earthquakes
+  <h3><span>Seismica</span> is an awesome app that lets you see seismic data from IRIS web services
+    (http://service.iris.edu)</h3>
+  <h4>Just enter the dates and time and the magnitudes in the form and hit the 'start' button. You'll see earthquakes
     from that period
-    displayed on the map. Now you can select an earthquake to view its seismic wave and other details.</p>
+    displayed on the map. Now you can select an earthquake to view its seismic wave and other details.</h4>
   <ul class="list">
     <li>To rotate the map, simply click and hold on the map while moving your mouse from left to right.</li>
     <li>If you're waiting too long for the data to load on the map, try submitting the form with different dates or
-      magnitudes to narrow down the results. Sometimes there's just too much information to load at once.</li>
+      magnitudes to narrow down the results. The seimic map may not load when there are too many earthquake data to
+      present.</li>
     <li>You can also save earthquake data and waves for later, allowing you to compare different earthquakes.</li>
-    <li>Please note that data isn't always available, especially for older events where seismic data might not be stored
-      in the database. You'll receive an alert if this happens.</li>
+    <li>Please note that data may be incomplete, especially for older events where seismic details are not stored
+      in the database.</li>
   </ul>
 </div>
