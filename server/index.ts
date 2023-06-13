@@ -23,26 +23,26 @@ const issuer = process.env.AUTH0_ISSUER_BASE_URL;
 
 const app: express.Application = express();
 
-// app.use(express.json());
-// app.set("json spaces", 2);
+app.use(express.json());
+app.set("json spaces", 2);
 
-// app.use(
-//   helmet({
-//     hsts: {
-//       maxAge: 31536000,
-//     },
-//     contentSecurityPolicy: {
-//       useDefaults: false,
-//       directives: {
-//         "default-src": ["'none'"],
-//         "frame-ancestors": ["'none'"],
-//       },
-//     },
-//     frameguard: {
-//       action: "deny",
-//     },
-//   })
-// );
+app.use(
+  helmet({
+    hsts: {
+      maxAge: 31536000,
+    },
+    contentSecurityPolicy: {
+      useDefaults: false,
+      directives: {
+        "default-src": ["'none'"],
+        "frame-ancestors": ["'none'"],
+      },
+    },
+    frameguard: {
+      action: "deny",
+    },
+  })
+);
 // router.use(auth(issuer))
 
 app.use(
