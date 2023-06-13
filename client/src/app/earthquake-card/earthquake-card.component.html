@@ -8,8 +8,8 @@
   </div>
 
   <div id="event-data-container">
-    <ul *ngFor="let d of data" id="data-list">
-      <li class="data-element">{{d}}</li>
+    <ul id="data-list">
+      <li *ngFor="let d of data" class="data-element">{{d}}</li>
     </ul>
   </div>
   <div id='wave{{date}}'></div>

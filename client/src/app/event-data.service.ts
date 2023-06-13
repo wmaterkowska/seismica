@@ -89,7 +89,7 @@ export class EventDataService {
     // dataPrepared.push(...evD[17].split(' ')) //field unit
     // dataPrepared.push(...evD[18].split(' ')) //field type
 
-    console.log('dataPrepared', dataPrepared)
+    // console.log('dataPrepared', dataPrepared)
     return dataPrepared;
   }
 

@@ -15,11 +15,21 @@ export class ComparisonComponent implements OnInit {
 
   ngOnInit(): void {
     const toCompare = this.comparisonService.toCompare.getValue();
-    const dates: string[] = [];
 
-    for (let el of toCompare) {
+    const dates: string[] = [];
+    //local storage 
+    const toCompareStorage = JSON.parse(localStorage.getItem('toCompare') || '[]');
+
+
+    // for (let el of toCompare) {
+    //   dates.push(el[0]);
+    // }
+
+    for (let el of toCompareStorage) {
       dates.push(el[0]);
     }
+
+    console.log(dates, 'dates___________________________')
 
     this.dates = dates;
   }
