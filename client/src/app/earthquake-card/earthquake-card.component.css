@@ -60,56 +60,67 @@
 
 #data-list {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   list-style-type: none;
+  justify-content: space-between;
 }
 
 .data-element {
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  gap: 100px;
 }
 
-#data-list:nth-child(1),
-#data-list:nth-child(2),
-#data-list:nth-child(3) {
+.data-element>* {
+  padding-top: 100px;
+}
+
+.data-element:nth-child(1),
+.data-element:nth-child(2),
+.data-element:nth-child(3) {
   font-size: large;
 }
 
-#data-list:nth-child(1),
-#data-list:nth-child(2),
-#data-list:nth-child(3),
-#data-list:nth-child(6),
-#data-list:nth-child(15),
-#data-list:nth-child(22),
-#data-list:nth-child(29) {
+.data-element:nth-child(1),
+.data-element:nth-child(2),
+.data-element:nth-child(3),
+.data-element:nth-child(6),
+.data-element:nth-child(15),
+.data-element:nth-child(22),
+.data-element:nth-child(29) {
   font-weight: bold;
   color: var(--blue);
 }
 
-#data-list:nth-child(4),
-#data-list:nth-child(7),
-#data-list:nth-child(9),
-#data-list:nth-child(11),
-#data-list:nth-child(13),
-#data-list:nth-child(16),
-#data-list:nth-child(18),
-#data-list:nth-child(20),
-#data-list:nth-child(23),
-#data-list:nth-child(25),
-#data-list:nth-child(27),
-#data-list:nth-child(30),
-#data-list:nth-child(32),
-#data-list:nth-child(34),
-#data-list:nth-child(36),
-#data-list:nth-child(38),
-#data-list:nth-child(40) {
+.data-element:nth-child(4),
+.data-element:nth-child(7),
+.data-element:nth-child(9),
+.data-element:nth-child(11),
+.data-element:nth-child(13),
+.data-element:nth-child(16),
+.data-element:nth-child(18),
+.data-element:nth-child(20),
+.data-element:nth-child(23),
+.data-element:nth-child(25),
+.data-element:nth-child(27),
+/* #data-list:nth-child(30), */
+.data-element:nth-child(32),
+.data-element:nth-child(34),
+.data-element:nth-child(36),
+.data-element:nth-child(38),
+.data-element:nth-child(40) {
   color: var(--blue);
 }
 
 
-#data-list:nth-child(6),
-#data-list:nth-child(15),
-#data-list:nth-child(22),
-#data-list:nth-child(29) {
+.data-element:nth-child(4),
+.data-element:nth-child(6),
+.data-element:nth-child(15),
+.data-element:nth-child(22),
+.data-element:nth-child(29) {
   flex-basis: 100%;
+  align-self: flex-start;
+  padding-top: 10px;
 }

@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { EventDataService } from '../event-data.service';
 import { MapService } from '../map.service';
 import { ComparisonService } from '../comparison.service';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-event-data',
@@ -48,11 +47,23 @@ export class EventDataComponent implements OnInit {
       let dat = '';
       this.mapService.dateOfEvent$.subscribe(d => { dat = d });
 
-      console.log(this.comparisonService.toCompare.getValue(), 'to compare ==============')
+      // console.log(this.comparisonService.toCompare.getValue(), 'to compare ==============')
 
       if (this.comparisonService.toCompare.getValue().length < 6) {
         let date = dat;
         let text = this.mapService.textOfEvent.getValue();
+
+        //local storage
+        if (localStorage.getItem('toCompare')) {
+          let previousToCompareJson: string | null = localStorage.getItem('toCompare');
+          let previousToCompare = JSON.parse(previousToCompareJson || '[]');
+          let toStorageArray = previousToCompare.concat([[...date, text]]);
+          let toStorage = JSON.stringify(toStorageArray);
+          localStorage.setItem('toCompare', toStorage);
+        } else {
+          localStorage.setItem('toCompare', JSON.stringify([[...date, text]]));
+        }
+
         this.comparisonService.toCompare.next(this.comparisonService.toCompare.getValue().concat([[...date, text]]))
       } else {
         alert('You reached the limit of earthquakes to compare.')

@@ -1,9 +1,8 @@
 //@ts-nocheck
 
-import { Injectable, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { EventDataService } from './event-data.service';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { WaveService } from './wave.service';
+import { BehaviorSubject } from 'rxjs';
 import { earthquakeData } from './earthquakesData';
 
 @Injectable({
@@ -16,7 +15,7 @@ export class ComparisonService {
 
   eventsD: [] = [];
 
-  constructor(private eventDataService: EventDataService, private waveService: WaveService) { }
+  constructor(private eventDataService: EventDataService) { }
 
 
 
