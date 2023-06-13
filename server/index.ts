@@ -18,7 +18,7 @@ if (!(process.env.PORT && process.env.CLIENT_ORIGIN_URL)) {
 
 const PORT: number = parseInt(process.env.PORT, 10);
 const CLIENT_ORIGIN_URL = process.env.CLIENT_ORIGIN_URL;
-const issuer = process.env.AUTH0_ISSUER_BASE_URL;
+// const issuer = process.env.AUTH0_ISSUER_BASE_URL;
 
 const app: express.Application = express();
 
@@ -44,10 +44,16 @@ app.use(
 );
 // router.use(auth(issuer))
 
+app.use((req, res, next) => {
+  res.contentType("application/json; charset=utf-8");
+  next();
+});
+
+
 app.use(
   cors({
     origin: CLIENT_ORIGIN_URL,
-    methods: ["GET"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Authorization", "Content-Type"],
     maxAge: 86400,
   })

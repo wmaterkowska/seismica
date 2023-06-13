@@ -1,4 +1,4 @@
-import prisma from "./index";
+import prisma from "./prisma";
 import { Prisma } from '@prisma/client'
 
 async function saveUserToDb(data: Prisma.UserCreateInput) {
@@ -11,7 +11,18 @@ async function saveUserToDb(data: Prisma.UserCreateInput) {
   return newUser;
 };
 
+async function getUserFromDb(userSub: string) {
+  const user = await prisma.user.findUnique({
+    where: {
+      sub: userSub
+    }
+  });
+  return user;
+};
+
+
 
 export {
-  saveUserToDb
+  saveUserToDb,
+  getUserFromDb
 }

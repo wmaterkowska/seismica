@@ -1,34 +1,59 @@
 import express from 'express';
-import { getEarthquakesData } from '../services/eventsService';
-import { getEarthquakeData } from '../services/eventService';
+import { Prisma } from '@prisma/client'
 
-// API service: http://service.iris.edu/
+import { getEventFromDb, getEventsFromDb, saveEventToDb } from '../models/event';
 
-// get request to get data from IRIS API of all earthquakes from sdate to edate with magnitudes from minM to maxM
-export const getEvents = async (req: express.Request, res: express.Response) => {
+export const getEventsToCompare = async (req: express.Request, res: express.Response) => {
   try {
-    const { sdate, edate, minM, maxM } = req.params;
-    let earthquakesData = await getEarthquakesData(sdate, edate, minM, maxM);
+    const userSub = req.auth?.payload.sub || '';
 
-    res.status(200);
-    res.send({ earthquakesData });
-  } catch {
-    res.status(400);
-    res.send('Getting data from API failed.')
+    if (userSub) {
+      const events = await getEventsFromDb(userSub);
+      res.status(200);
+      res.send(events)
+    } else {
+      console.log('Error: Failed authentication.');
+      res.sendStatus(401);
+    }
+  } catch (e) {
+    console.log('Error', e);
+    res.sendStatus(500);
   }
 }
 
-// get request to get wave data from IRIS API of single earthquake
-export const getEventData = async (req: express.Request, res: express.Response) => {
+
+export const getEventByDate = async (req: express.Request, res: express.Response) => {
   try {
-    const { date } = req.params;
-    let eventData = await getEarthquakeData(date);
+    const userSub = req.auth?.payload.sub || '';
+    const date = String(req.params.date);
+
+    if (userSub) {
+      const events = await getEventFromDb(userSub, date);
+      res.status(200);
+      res.send(events)
+    } else {
+      console.log('Error: Failed authentication.');
+      res.sendStatus(401);
+    }
+  } catch (e) {
+    console.log('Error', e);
+    res.sendStatus(500);
+  }
+}
+
+
+export const postEventToCompare = async (req: express.Request<{}, {}, Prisma.EventCreateInput>, res: express.Response) => {
+  try {
+    const eventData = req.body;
+
+    const userSub = req.auth?.payload.sub || '';
+
+    const newEvent = await saveEventToDb(userSub, eventData);
 
     res.status(200);
-    res.send({ eventData });
-  } catch {
-    res.status(400);
-    res.send('Getting data from API failed.')
+    res.send(newEvent);
+  } catch (e) {
+    console.log('Error', e);
+    res.sendStatus(500);
   }
-
 }
