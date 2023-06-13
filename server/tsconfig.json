@@ -4,12 +4,16 @@
     "module": "commonjs",
     "outDir": "build",
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": [
+      "node"
+    ]
   },
   "include": [
-    "./*"
+    "./*",
+    "./**/*.ts"
   ],
   "exclude": [
     "./build"
-  ]
+  ],
 }

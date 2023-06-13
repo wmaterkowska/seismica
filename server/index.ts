@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import * as dotenv from "dotenv";
 import helmet from 'helmet';
-import { auth } from 'express-oauth2-jwt-bearer';
 
 import { errorHandler } from "./middleware/error.middleware";
 import { notFoundHandler } from "./middleware/not-found.middleware";
