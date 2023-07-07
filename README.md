@@ -1,6 +1,6 @@
 # Seismica: Earthquake Visualization Data App
 
-Welcome to the Seismica repository! This app allows you to visualize earthquakes from a chosen period of time and provides detailed information about each earthquake, including wave data. You can compare multiple earthquakes and view their data and waveforms on a separate page. The app saves data locally and utilizes the Iris web services for earthquake information.
+Welcome to the seismica repository! This app allows you to visualize earthquakes from a chosen period of time and provides detailed information about each earthquake, including wave data. You can compare multiple earthquakes and view their data and waveforms on a separate page. The app saves data locally and utilizes the Iris web services for earthquake information.
 
 ![Seismica Screenshot](./seismica-screenshot.PNG)
 
@@ -12,7 +12,7 @@ Welcome to the Seismica repository! This app allows you to visualize earthquakes
 
 ## Getting Started
 
-To run the Seismica app locally, please follow the steps below:
+To run the seismica app locally, please follow the steps below:
 
 ### Prerequisites
 
@@ -27,13 +27,13 @@ Before running the app, ensure that you have the following installed on your mac
 1. Clone this repository to your local machine or download the source code as a ZIP file.
 
 ```
-git clone https://github.com/wmaterkowska/Seismica
+git clone https://github.com/wmaterkowska/seismica
 ```
 
 2. Navigate to the `client` folder:
 
 ```
-cd Seismica/client
+cd seismica/client
 ```
 
 3. Install the client-side dependencies:
@@ -65,7 +65,7 @@ npm start
 2. Open a new terminal window/tab and navigate to the `client` folder:
 
 ```
-cd Seismica/client
+cd seismica/client
 ```
 
 3. Run the Angular development server:
@@ -74,11 +74,11 @@ cd Seismica/client
 npm start
 ```
 
-4. Open your web browser and visit `http://localhost:4200` to access the Seismica app.
+4. Open your web browser and visit `http://localhost:4200` to access the seismica app.
 
 ## Tech Stack
 
-The Seismica app is built using the following technologies and frameworks:
+The seismica app is built using the following technologies and frameworks:
 
 - **Express.js:** A fast and minimalist web application framework for Node.js, used for building the server-side of the app.
 - **Angular:** A powerful TypeScript-based framework for building dynamic web applications, used for developing the client-side of the app.
@@ -86,6 +86,6 @@ The Seismica app is built using the following technologies and frameworks:
 
 ## Contributors
 
-This Seismica app is a solo project developed by [Weronika Materkowska](https://github.com/wmaterkowska). If you have any questions, suggestions, or would like to contribute to the project, please feel free to reach out or submit a pull request.
+This seismica app is a solo project developed by [Weronika Materkowska](https://github.com/wmaterkowska). If you have any questions, suggestions, or would like to contribute to the project, please feel free to reach out or submit a pull request.
 
 - Your Name: [GitHub](https://github.com/wmaterkowska) | [LinkedIn](https://www.linkedin.com/in/weronika-materkowska-848142231/)
