@@ -14,7 +14,6 @@ export class ComparisonComponent implements OnInit {
   @Input() dates: string[] = this.comparisonService.toCompare.getValue()[0];
 
   ngOnInit(): void {
-    const toCompare = this.comparisonService.toCompare.getValue();
 
     const dates: string[] = [];
     //local storage 
