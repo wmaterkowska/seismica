@@ -47,22 +47,26 @@ export class EventDataComponent implements OnInit {
       let dat = '';
       this.mapService.dateOfEvent$.subscribe(d => { dat = d });
 
+
       if (JSON.parse(localStorage.getItem('toCompare') || '[]').length < 6) {
         let date = dat;
         let text = this.mapService.textOfEvent.getValue();
 
         //local storage
-        if (localStorage.getItem('toCompare')) {
-          let previousToCompareJson: string | null = localStorage.getItem('toCompare');
-          let previousToCompare = JSON.parse(previousToCompareJson || '[]');
-          let toStorageArray = previousToCompare.concat([[...date, text]]);
-          let toStorage = JSON.stringify(toStorageArray);
-          localStorage.setItem('toCompare', toStorage);
+        if (!localStorage.getItem('toCompare')?.includes(dat)) {
+          if (localStorage.getItem('toCompare')) {
+            let previousToCompareJson: string | null = localStorage.getItem('toCompare');
+            let previousToCompare = JSON.parse(previousToCompareJson || '[]');
+            let toStorageArray = previousToCompare.concat([[...date, text]]);
+            let toStorage = JSON.stringify(toStorageArray);
+            localStorage.setItem('toCompare', toStorage);
+          } else {
+            localStorage.setItem('toCompare', JSON.stringify([[...date, text]]));
+          }
+          this.comparisonService.toCompare.next(this.comparisonService.toCompare.getValue().concat([[...date, text]]))
         } else {
-          localStorage.setItem('toCompare', JSON.stringify([[...date, text]]));
+          alert('Earthquake already checked for comparison.')
         }
-
-        this.comparisonService.toCompare.next(this.comparisonService.toCompare.getValue().concat([[...date, text]]))
       } else {
         alert('You reached the limit of earthquakes to compare.')
       }
