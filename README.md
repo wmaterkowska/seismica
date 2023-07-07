@@ -71,7 +71,7 @@ cd seismica/client
 3. Run the Angular development server:
 
 ```
-ng serve
+npm start
 ```
 
 4. Open your web browser and visit `http://localhost:4200` to access the Seismica app.
