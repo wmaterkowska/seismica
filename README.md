@@ -27,7 +27,7 @@ Before running the app, ensure that you have the following installed on your mac
 1. Clone this repository to your local machine or download the source code as a ZIP file.
 
 ```
-git clone https://github.com/wmaterkowska/EarthquakeApp
+git clone https://github.com/wmaterkowska/Seismica
 ```
 
 2. Navigate to the `client` folder:
