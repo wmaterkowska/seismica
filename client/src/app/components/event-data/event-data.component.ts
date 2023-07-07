@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { EventDataService } from '../event-data.service';
-import { MapService } from '../map.service';
-import { ComparisonService } from '../comparison.service';
+import { EventDataService } from '../../services/event-data.service';
+import { MapService } from '../../services/map.service';
+import { ComparisonService } from '../../services/comparison.service';
 
 @Component({
   selector: 'app-event-data',
@@ -17,6 +17,7 @@ export class EventDataComponent implements OnInit {
 
   clicked: boolean = false;
   dataLoaded: boolean = true;
+  isEventData: Boolean = this.mapService.isEventData.getValue()
 
   ngOnInit(): void {
 
@@ -36,7 +37,6 @@ export class EventDataComponent implements OnInit {
         this.clicked = false;
       }
     });
-
   }
 
 
@@ -47,9 +47,6 @@ export class EventDataComponent implements OnInit {
       let dat = '';
       this.mapService.dateOfEvent$.subscribe(d => { dat = d });
 
-      // console.log(this.comparisonService.toCompare.getValue(), 'to compare ==============')
-
-      // if (this.comparisonService.toCompare.getValue().length < 6) {
       if (JSON.parse(localStorage.getItem('toCompare') || '[]').length < 6) {
         let date = dat;
         let text = this.mapService.textOfEvent.getValue();
@@ -85,10 +82,5 @@ export class EventDataComponent implements OnInit {
       }
       this.clicked = false;
     }
-
-    console.log(this.comparisonService.toCompare.getValue(), 'to compare');
-
   }
-
-
 }

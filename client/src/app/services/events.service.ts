@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { BehaviorSubject } from 'rxjs';
-import { earthquakesData } from './earthquakesData';
+import { earthquakesData } from '../types/earthquakesData';
 
 @Injectable({
   providedIn: 'root'

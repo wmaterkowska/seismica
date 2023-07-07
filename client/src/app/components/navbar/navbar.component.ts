@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ComparisonService } from '../comparison.service';
+import { ComparisonService } from '../../services/comparison.service';
+import { MapService } from 'src/app/services/map.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { ComparisonService } from '../comparison.service';
 })
 export class NavbarComponent {
 
-  constructor(private comparisonService: ComparisonService) { }
+  constructor(private comparisonService: ComparisonService, private mapService: MapService) { }
 
   isToolTipShowed: boolean = false;
 
@@ -23,7 +24,7 @@ export class NavbarComponent {
 
   async handleCompareClick() {
     let link = 'comparison'
-    // let link = await this.comparisonService.getDataToCompare();
+    this.mapService.isEventData.next(false);
     return link;
   }
 

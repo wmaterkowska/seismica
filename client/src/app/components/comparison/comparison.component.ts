@@ -1,6 +1,6 @@
 
 import { Component, Input, OnInit } from '@angular/core';
-import { ComparisonService } from '../comparison.service';
+import { ComparisonService } from '../../services/comparison.service';
 
 @Component({
   selector: 'app-comparison',
@@ -21,20 +21,11 @@ export class ComparisonComponent implements OnInit {
     const toCompareStorage = JSON.parse(localStorage.getItem('toCompare') || '[]');
 
 
-    // for (let el of toCompare) {
-    //   dates.push(el[0]);
-    // }
-
     for (let el of toCompareStorage) {
       dates.push(el[0]);
     }
 
-    console.log(dates, 'dates___________________________')
 
     this.dates = dates;
   }
-
-
-
-
 }

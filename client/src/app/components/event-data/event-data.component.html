@@ -1,4 +1,4 @@
-<div id="event-container">
+<div id="event-container" [hidden]="!isEventData">
   <button id="add-btn" class="add-btn" (click)="addToCompare()">
     <span class="material-symbols-outlined">bookmark_add</span>
   </button>
@@ -12,5 +12,5 @@
       <li class="data-element">{{d}}</li>
     </ul>
   </div>
-  <div [hidden]="!dataLoaded" id='wave'></div>
+  <div id='wave'></div>
 </div>
