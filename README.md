@@ -33,7 +33,7 @@ git clone https://github.com/wmaterkowska/Seismica
 2. Navigate to the `client` folder:
 
 ```
-cd seismica/client
+cd Seismica/client
 ```
 
 3. Install the client-side dependencies:
@@ -65,7 +65,7 @@ npm start
 2. Open a new terminal window/tab and navigate to the `client` folder:
 
 ```
-cd seismica/client
+cd Seismica/client
 ```
 
 3. Run the Angular development server:
