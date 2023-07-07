@@ -49,7 +49,8 @@ export class EventDataComponent implements OnInit {
 
       // console.log(this.comparisonService.toCompare.getValue(), 'to compare ==============')
 
-      if (this.comparisonService.toCompare.getValue().length < 6) {
+      // if (this.comparisonService.toCompare.getValue().length < 6) {
+      if (JSON.parse(localStorage.getItem('toCompare') || '[]').length < 6) {
         let date = dat;
         let text = this.mapService.textOfEvent.getValue();
 
