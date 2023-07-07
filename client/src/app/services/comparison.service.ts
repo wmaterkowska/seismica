@@ -1,9 +1,9 @@
 //@ts-nocheck
 
 import { Injectable } from '@angular/core';
-import { EventDataService } from './event-data.service';
+import { EventDataService } from '../services/event-data.service';
 import { BehaviorSubject } from 'rxjs';
-import { earthquakeData } from './earthquakesData';
+import { earthquakeData } from '../types/earthquakesData';
 
 @Injectable({
   providedIn: 'root'

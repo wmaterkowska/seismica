@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ComparisonService } from '../comparison.service';
+import { ComparisonService } from '../../services/comparison.service';
 
 @Component({
   selector: 'app-navbar',

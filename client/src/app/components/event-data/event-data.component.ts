@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { EventDataService } from '../event-data.service';
-import { MapService } from '../map.service';
-import { ComparisonService } from '../comparison.service';
+import { EventDataService } from '../../services/event-data.service';
+import { MapService } from '../../services/map.service';
+import { ComparisonService } from '../../services/comparison.service';
 
 @Component({
   selector: 'app-event-data',

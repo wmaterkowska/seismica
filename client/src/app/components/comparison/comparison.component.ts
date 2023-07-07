@@ -1,6 +1,6 @@
 
 import { Component, Input, OnInit } from '@angular/core';
-import { ComparisonService } from '../comparison.service';
+import { ComparisonService } from '../../services/comparison.service';
 
 @Component({
   selector: 'app-comparison',

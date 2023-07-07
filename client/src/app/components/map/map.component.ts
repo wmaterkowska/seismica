@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MapService } from '../map.service';
-import { EventsService } from '../events.service';
-import { earthquakesData } from '../earthquakesData';
+import { MapService } from '../../services/map.service';
+import { EventsService } from '../../services/events.service';
+import { earthquakesData } from '../../types/earthquakesData';
 
 @Component({
   selector: 'app-map',

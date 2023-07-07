@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { ComparisonComponent } from './comparison/comparison.component';
+import { ComparisonComponent } from './components/comparison/comparison.component';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 const routes: Routes = [

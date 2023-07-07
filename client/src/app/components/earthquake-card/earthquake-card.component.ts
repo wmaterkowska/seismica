@@ -1,9 +1,9 @@
 //@ts-nocheck
 
 import { Component, Input, OnInit } from '@angular/core';
-import { EventDataService } from '../event-data.service';
-import { WaveService } from '../wave.service';
-import { ComparisonService } from '../comparison.service';
+import { EventDataService } from '../../services/event-data.service';
+import { WaveService } from '../../services/wave.service';
+import { ComparisonService } from '../../services/comparison.service';
 
 @Component({
   selector: 'app-earthquake-card',

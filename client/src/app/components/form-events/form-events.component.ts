@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { EventsService } from '../events.service';
+import { EventsService } from '../../services/events.service';
 
 @Component({
   selector: 'app-form-events',
