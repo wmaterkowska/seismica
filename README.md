@@ -2,7 +2,7 @@
 
 Welcome to the Seismica repository! This app allows you to visualize earthquakes from a chosen period of time and provides detailed information about each earthquake, including wave data. You can compare multiple earthquakes and view their data and waveforms on a separate page. The app saves data locally and utilizes the Iris web services for earthquake information.
 
-![Seismica Screenshot](./seismica-screenshot.png)
+![Seismica Screenshot](./seismica-screenshot.PNG)
 
 ## Table of Contents
 
