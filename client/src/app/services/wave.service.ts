@@ -45,8 +45,5 @@ export class WaveService {
     }
 
     Plotly.newPlot(divName, data, layout);
-
   }
-
-
 }
