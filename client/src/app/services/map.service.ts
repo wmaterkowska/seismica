@@ -26,24 +26,26 @@ export class MapService {
 
   async plotMap(earthquakes: any) {
 
+    console.log(earthquakes);
+
     let lats: number[];
     let lons: number[];
     let magnitudes: number[];
     let places: string[];
     let times: string[];
 
-    if (typeof earthquakes.earthquakesData === 'undefined') {
+    if (typeof earthquakes === 'undefined' || earthquakes.hasOwnProperty('latitudes') === false) {
       lats = [];
       lons = [];
       magnitudes = [];
       places = [];
       times = [];
     } else {
-      lats = earthquakes.earthquakesData.latitudes;
-      lons = earthquakes.earthquakesData.longitudes;
-      magnitudes = earthquakes.earthquakesData.magnitudes;
-      places = earthquakes.earthquakesData.locations;
-      times = earthquakes.earthquakesData.times;
+      lats = earthquakes.latitudes;
+      lons = earthquakes.longitudes;
+      magnitudes = earthquakes.magnitudes;
+      places = earthquakes.locations;
+      times = earthquakes.times;
     }
 
     let text = [];

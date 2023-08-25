@@ -54,7 +54,7 @@ export class FormEventsComponent {
     if (new Date(startDate) > new Date(endDate)) {
       alert('Start Date have to be before End Date.');
     } else if (eventsDataObj.minMag > eventsDataObj.maxMag) {
-      alert('Min Magnitude should be smaller then Max Mgnitude.')
+      alert('Min Magnitude should be smaller then Max Magnitude.')
     } else {
       this.service.getEvents(startDate, endDate, eventsDataObj.minMag, eventsDataObj.maxMag);
     }
