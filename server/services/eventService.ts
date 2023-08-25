@@ -26,6 +26,8 @@ async function fetchEventDataFromApi(date: string) {
   const eventDataString = await eventData.text();
 
   const dataObject = parseEventData(eventDataString);
+  console.log(eventDataString, 'event data string');
+  console.log(dataObject, 'data object');
 
   return dataObject;
 }

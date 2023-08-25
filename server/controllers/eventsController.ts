@@ -11,7 +11,7 @@ export const getEvents = async (req: express.Request, res: express.Response) => 
     let earthquakesData = await getEarthquakesData(sdate, edate, minM, maxM);
 
     res.status(200);
-    res.send({ earthquakesData });
+    res.send(earthquakesData);
   } catch {
     res.status(400);
     res.send('Getting data from API failed.')

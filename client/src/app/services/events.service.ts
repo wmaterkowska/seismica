@@ -8,7 +8,7 @@ import { earthquakesData } from '../types/earthquakesData';
 })
 export class EventsService {
 
-  private baseURL = 'http://localhost:3000';
+  private baseURL = 'http://localhost:8080';
 
   // private events: earthquakesData = {
   //   ids: [],
