@@ -23,9 +23,9 @@ export class EventDataComponent implements OnInit {
 
     this.mapService.dataLoaded.subscribe(dL => this.dataLoaded = dL);
 
-    this.eventDataService.dataE.subscribe(evD => {
-      if (evD) {
 
+    this.eventDataService.dataE.subscribe((evD: string[]) => {
+      if (evD && evD[0] !== '') {
         const dataToShow = this.eventDataService.prepareData(evD);
 
         this.data = dataToShow;
@@ -37,6 +37,7 @@ export class EventDataComponent implements OnInit {
         this.clicked = false;
       }
     });
+
   }
 
 

@@ -26,8 +26,6 @@ export class MapService {
 
   async plotMap(earthquakes: any) {
 
-    console.log(earthquakes);
-
     let lats: number[];
     let lons: number[];
     let magnitudes: number[];
@@ -142,10 +140,10 @@ export class MapService {
         (await this.eventDataService.getEventData(date))
           .subscribe(event => {
 
-            dataToShow.push(...event.eventData.metadata);
+            dataToShow.push(...event.metadata);
 
             this.eventDataService.loadEventData(dataToShow);
-            this.waveService.plotWave(event.eventData.wave);
+            this.waveService.plotWave(event.wave);
 
             // this.eventDataService.hideloader();
             this.dataLoaded.next(true);

@@ -1,7 +1,7 @@
 //@ts-nocheck
 
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class EventDataService {
 
-  private baseURL = 'http://localhost:3000/eventData';
+  private baseURL = 'http://localhost:8080/eventData';
 
   public eventData$ = new BehaviorSubject<string[]>(['']);
   public dataE = this.eventData$.asObservable();
@@ -52,8 +52,9 @@ export class EventDataService {
   // }
 
   prepareData(evD: string[]) {
+
     evD.forEach(field => {
-      // console.log('evD', field, evD.indexOf(field));
+      console.log('evD', field, evD.indexOf(field));
     })
     let dataPrepared: string[] = [];
 

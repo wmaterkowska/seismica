@@ -46,9 +46,9 @@ export class EarthquakeCardComponent implements OnInit {
     (await this.eventDataService.getEventData(this.date))
       .subscribe((evD) => {
 
-        this.waveService.plotWave(evD.eventData.wave, this.date);
+        this.waveService.plotWave(evD.wave, this.date);
 
-        let dataToLoad = [text, ...evD.eventData.metadata];
+        let dataToLoad = [text, ...evD.metadata];
 
         this.eventDataService.loadEventData(dataToLoad);
 
