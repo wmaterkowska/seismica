@@ -95,4 +95,4 @@ The seismica app is built using the following technologies and frameworks:
 
 This seismica app is a solo project developed by [Weronika Materkowska](https://github.com/wmaterkowska). If you have any questions, suggestions, or would like to contribute to the project, please feel free to reach out or submit a pull request.
 
-- Your Name: [GitHub](https://github.com/wmaterkowska) | [LinkedIn](https://www.linkedin.com/in/weronika-materkowska-848142231/)
+- Weronika Materkowska: [GitHub](https://github.com/wmaterkowska) | [LinkedIn](https://www.linkedin.com/in/weronika-materkowska-848142231/)
